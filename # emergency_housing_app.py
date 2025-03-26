@@ -88,4 +88,56 @@ if st.button("Get Housing Assistance"):
         st.subheader("📄 Application Preparation Help")
         st.write(prep_help)
 
+# Feature Community Resources and Support
+# Sample community resources data (you can replace this with a database or an API)
+data = {
+    'Resource': ['Food Assistance', 'Mental Health Counseling', 'Job Training', 'Transitional Housing Support'],
+    'Description': [
+        'Provides food to individuals and families in need through local food banks and distribution centers.',
+        'Offers counseling services, including support groups and therapy for those experiencing mental health challenges.',
+        'Job training programs to help individuals gain skills for new careers, resume building, and interview preparation.',
+        'Temporary housing assistance for individuals and families experiencing homelessness or housing instability.'
+    ],
+    'Contact': [
+        'Local Food Bank: 555-1234',
+        'Mental Health Support: 555-5678',
+        'Job Training Center: 555-9101',
+        'Transitional Housing: 555-1122'
+    ],
+    'Location': [
+        '123 Main St, San José, CA',
+        '456 Elm St, San José, CA',
+        '789 Oak St, San José, CA',
+        '101 Pine St, San José, CA'
+    ]
+}
+
+# Create a DataFrame
+df = pd.DataFrame(data)
+
+# Title of the app
+st.title("Community Resources and Support")
+
+# Introductory Text
+st.write("""
+This platform provides community resources and support that you can connect with, such as food assistance, mental health counseling, job training, and transitional housing support.
+Select a resource below to find more information.
+""")
+
+# Dropdown menu for selecting a resource
+resource_option = st.selectbox("Select a resource", df['Resource'])
+
+# Display the selected resource details
+resource_info = df[df['Resource'] == resource_option].iloc[0]
+st.subheader(resource_info['Resource'])
+st.write(f"**Description:** {resource_info['Description']}")
+st.write(f"**Contact Information:** {resource_info['Contact']}")
+st.write(f"**Location:** {resource_info['Location']}")
+
+# Adding a button for more detailed contact options (for demo purposes)
+if st.button('Request More Information'):
+    st.write(f"Please contact {resource_info['Contact']} for further assistance with {resource_info['Resource']}.")
+
+
+
 st.caption("Created by the Sapphire Team • Powered by OpenAI & Streamlit")
