@@ -24,7 +24,8 @@ st.markdown(
 
 - **Residency**: Must be a resident of Santa Clara County.
 - **Homeless Status**: Must be currently experiencing homelessness.
-- **Assessment**: Completion of the Vulnerability Index-Service Prioritization Decision Assistance Tool (VI-SPDAT) to determine housing and service needs. [Learn more about Coordinated Entry and VI-SPDAT](https://osh.sccgov.org/continuum-care/coordinated-entry)
+- **Assessment**: Completion of the Vulnerability Index-Service Prioritization Decision Assistance Tool (VI-SPDAT) to determine housing and service needs. 
+[Learn more about Coordinated Entry and VI-SPDAT](https://osh.sccgov.org/continuum-care/coordinated-entry)
 - **Special Populations**: Certain programs may prioritize specific groups, such as:
   - Transition-aged youth (16 to 24 years old)
   - Domestic violence survivors
@@ -40,7 +41,8 @@ st.subheader('Required Documents', divider= 'color')
 st.subheader('Application Process', divider= 'color')
 st.markdown(
 '''1. **Initial Contact**:
-   - **Here4You Hotline**: Call **(408) 385-2400** between 9:00 AM and 7:00 PM, seven days a week, to connect with a representative who can assist with shelter placements. [More details](https://osh.sccgov.org/solutions-homelessness/interim-solutions/emergency-shelters)
+   - **Here4You Hotline**: Call **(408) 385-2400** between 9:00 AM and 7:00 PM, seven days a week, to connect with a representative who can assist with shelter placements. 
+   [More details](https://osh.sccgov.org/solutions-homelessness/interim-solutions/emergency-shelters)
    - **Coordinated Entry Assessment**: Schedule an appointment to complete the VI-SPDAT assessment.
 2. **Documentation**: Prepare necessary documents, which may include:
    - Identification (e.g., driver's license, state ID)
