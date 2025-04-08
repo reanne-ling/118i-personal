@@ -15,12 +15,12 @@ st.subheader('Table of Contents', divider= 'color')
 col1, col2, col3 = st.columns(3)
 with col1:
    st.page_link("main_page.py", label="Home", icon="🏠", disabled=True)
-   st.page_link("pages/page_1.py", label="Page 1", icon="1️⃣")
+   st.page_link("pages/page_1.py", label="Eligibility & Requirements", icon="1️⃣")
 
 with col2:
    st.page_link("pages/page_2.py", label="Page 2", icon="2")
    st.page_link("pages/page_3.py", label="Page 3", icon="3")
 
 with col3:
-   st.page_link("pages/page_4.py", label="Page 4", icon="4")
-   st.page_link("pages/page_5.py", label="Page 5", icon="5")
+   st.page_link("pages/page_4.py", label="Translations (but this is from prof's)", icon="4")
+   st.page_link("pages/page_5.py", label="Resources & Help", icon="5")
