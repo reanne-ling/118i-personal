@@ -3,13 +3,14 @@ import pandas as pd
 import numpy as np
 import openai
 
-st.markdown("# Eligibility & Requirement 📋")
+# for it to pop up on the sidebar
 st.sidebar.markdown("# Eligibility & Requirements 📋")
 
 # page title
 st.title('Eligibility & Requirement 📋')
-st.subheader('Learn about who qualifies for emergency interim housing,' \
+st.write('Learn about who qualifies for emergency interim housing,' \
 ' what documents you will need, and how to prepare for the application process.')
+
 
 # introduction
 st.write(
@@ -18,7 +19,7 @@ st.write(
 'available for individuals and families experiencing homelessness in San José and Santa Clara County.')
 
 # for the qualifications
-st.subheader('Qualifications for EIH', divider= 'color')
+st.subheader('Qualifications for EIH', divider= 'blue')
 st.markdown(
 '''To qualify for the EIH program, applicants must meet the following requirements:
 
@@ -35,10 +36,10 @@ st.markdown(
 ''')
 
 # for the req documents
-st.subheader('Required Documents', divider= 'color')
+st.subheader('Required Documents', divider= 'blue')
 
 # for the app process
-st.subheader('Application Process', divider= 'color')
+st.subheader('Application Process', divider= 'blue')
 st.markdown(
 '''1. **Initial Contact**:
    - **Here4You Hotline**: Call **(408) 385-2400** between 9:00 AM and 7:00 PM, seven days a week, to connect with a representative who can assist with shelter placements. 
@@ -54,11 +55,11 @@ st.markdown(
 ''')
 
 # for the faq
-st.subheader('FAQs for common situations', divider= 'color')
+st.subheader('FAQs for common situations', divider= 'blue')
 
 
 # for the references they can press/websites
-st.subheader('Additional References', divider= 'color')
+st.subheader('Additional References', divider= 'blue')
 st.markdown(
 '''- **Homeless Resource Guide**: A comprehensive guide to services available for individuals experiencing homelessness in San José.
   - [English Guide](https://www.sanjoseca.gov/your-government/departments-offices/housing/homelessness-response/homeless-families-individuals)
@@ -69,7 +70,7 @@ st.markdown(
 ''')
 
 # for contact info for the shelter hotline
-st.subheader('Contact Information')
+st.subheader('Contact Information', divider= 'blue')
 st.markdown(
 '''For further assistance or inquiries:
 

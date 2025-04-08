@@ -3,20 +3,21 @@ import pandas as pd
 import numpy as np
 import openai
 
-st.markdown("# Resources & Help 🆘 ")
+# for it to pop up on the sidebar
 st.sidebar.markdown("# Resources & Help 🆘 ")
 
 # page title
 st.title('Resources & Help 🆘 ')
-st.subheader('For individuals seeking emergency interim housing and support services in San Jose, CA!')
+st.write('For individuals seeking emergency interim housing and support services in San Jose, CA!')
 
 # title for san jose resources
-st.header('Resource Locations', divider='color')
-message = 'These reosurces are mainly listed for the San Jose/Santa Clara County area.'
+st.subheader('Resource Locations', divider='blue')
+message = 'These resources are mainly listed for the San Jose/Santa Clara County area.'
+st.write(message)
 
 # ----------------------------------------------------------------
 # for shelter locations
-st.subheader('Emergency Shelters', divider= 'color')
+st.subheader('Emergency Shelters', divider= 'blue')
 
 df = pd.DataFrame(
     np.random.randn(1000, 2) / [50, 50] + [37.33, -121.88],
@@ -39,7 +40,7 @@ st.markdown('''
 # ----------------------------------------------------------------
 
 # for local food banks and basic needs
-st.subheader('Local Food Banks & Basic Needs', divider= 'color')
+st.subheader('Local Food Banks & Basic Needs', divider= 'blue')
 st.markdown('''
 - **[Second Harvest of Silicon Valley](https://www.shfb.org/)**  
   Services: Free groceries, food pantries  
@@ -49,11 +50,11 @@ st.markdown('''
 
 # ----------------------------------------------------------------
 #for legal aid services
-st.subheader('Legal Aid', divider= 'color')
+st.subheader('Legal Aid', divider= 'blue')
 # ----------------------------------------------------------------
 
 # for medical care resources
-st.subheader('Medical Care', divider= 'color')
+st.subheader('Medical Care', divider= 'blue')
 st.markdown('''
 - **[Gardner Health Services](https://gardnerhealthservices.org/)**  
   Services: Primary care, behavioral health, substance use treatment  
@@ -62,7 +63,7 @@ st.markdown('''
 ''')
 
 # for crisis resources
-st.subheader('Crisis Lines', divider= 'color')
+st.subheader('Crisis Lines', divider= 'blue')
 st.subheader('Domestic Violence & Safety')
 st.markdown('''
 - **[Next Door Solutions](https://nextdoorsolutions.org/)**  
@@ -96,7 +97,7 @@ st.markdown('''
 
 # ----------------------------------------------------------------
 # for transportation support
-st.subheader('Transportation Support', divider= 'color')
+st.subheader('Transportation Support', divider= 'blue')
 # ----------------------------------------------------------------
 
 # footer

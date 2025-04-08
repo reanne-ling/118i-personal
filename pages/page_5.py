@@ -5,23 +5,23 @@ import streamlit as st
 import requests
 from openai import OpenAI
 
-st.markdown("# Translator 🌍")
+# for it to pop up on the sidebar
 st.sidebar.markdown("# Translator 🌍")
 
 # page title
 st.title('Translator 🌍')
 st.subheader('Access real-time language support to help you understand forms, ' \
-'instructions, and key information—available in multiple languages.', divider= 'color')
+'instructions, and key information—available in multiple languages.', divider= 'blue')
 
 # Create two radio buttons
 # these languages are based on local demogrpahic data within San Jose (Santa Clara County)
-source_language = st.radio('Select Source language', [
+source_language = st.selectbox('Select Source language', [
     'English', 'Spanish', 'French', 'Vietnamese', 
     'Mandarin', 'Cantonese', 'Tagalog', 'Korean', 'Hindi', 
     'Arabic', 'Russian', 'Farsi', 'Punjabi', 'Japanese', 
     'Portuguese', 'Thai'
     ])
-target_language = st.radio('Select Target language', [
+target_language = st.selectbox('Select Target language', [
     'English', 'Spanish', 'French', 'Vietnamese', 
     'Mandarin', 'Cantonese', 'Tagalog', 'Korean', 'Hindi', 
     'Arabic', 'Russian', 'Farsi', 'Punjabi', 'Japanese', 
