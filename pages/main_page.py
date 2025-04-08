@@ -9,11 +9,13 @@ st.sidebar.markdown("# Home Page")
 # title
 st.title('#Name of the program')
 
+# introduction
 message = "Hi! Welcome to Our-program-name!" \
 "We are here to aid you in your EIH needs."
 message += "Please come and explore our applications for your needs!"
 st.write(message)
 
+# for table of contents
 st.subheader('Table of Contents', divider= 'color')
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -29,3 +31,7 @@ with col3:
    st.page_link("pages/page_5.py", label="Translator (but this is from prof's)", icon="🌍")
    st.page_link("pages/page_6.py", label="SpeechBot", icon="🔊")
 
+# button to apply for emergency housing or directed to it
+# Clear call-to-action: “Apply for Emergency Housing”
+
+# general crisis hotline or emergency contacts displayed prominently

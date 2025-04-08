@@ -11,18 +11,21 @@ st.sidebar.markdown("# Translator 🌍")
 # page title
 st.title('Translator 🌍')
 st.subheader('Access real-time language support to help you understand forms, ' \
-'instructions, and key information—available in multiple languages.')
-
-
-st.subheader('This tool can help you translate anything ' \
-'you may need.', divider= 'color')
+'instructions, and key information—available in multiple languages.', divider= 'color')
 
 # Create two radio buttons
+# these languages are based on local demogrpahic data within San Jose (Santa Clara County)
 source_language = st.radio('Select Source language', [
-    'English', 'French', 'German'
+    'English', 'Spanish', 'French', 'Vietnamese', 
+    'Mandarin', 'Cantonese', 'Tagalog', 'Korean', 'Hindi', 
+    'Arabic', 'Russian', 'Farsi', 'Punjabi', 'Japanese', 
+    'Portuguese', 'Thai'
     ])
 target_language = st.radio('Select Target language', [
-    'English', 'French', 'German'
+    'English', 'Spanish', 'French', 'Vietnamese', 
+    'Mandarin', 'Cantonese', 'Tagalog', 'Korean', 'Hindi', 
+    'Arabic', 'Russian', 'Farsi', 'Punjabi', 'Japanese', 
+    'Portuguese', 'Thai'
     ])
 
 # Create a text input field
@@ -35,9 +38,8 @@ if st.button('Submit'):
     st.write(f'Source language: {source_language}')
     st.write(f'Target language: {target_language}')
 
-
+# using openai api key to access 
 openai.api_key = os.environ["OPENAI_API_KEY"]
-
 client = OpenAI()
 
 
