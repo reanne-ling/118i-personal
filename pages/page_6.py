@@ -6,12 +6,17 @@ import requests
 from openai import OpenAI
 from pathlib import Path
 
-st.markdown("# SpeechBot")
-st.sidebar.markdown("# SpeechBot")
+st.markdown("# SpeechBot 🔊")
+st.sidebar.markdown("# SpeechBot 🔊")
+
+# page title
+st.title('SpeechBot 🔊')
+st.subheader('Use our voice assistant to ask questions and get help navigating resources hands-free. Great for accessibility and quick info!')
+
+
 
 st.subheader('Speech issues? No problem! This tool can help you ' \
 'translate anything needed into speech.', divider= 'color')
-
 
 speech_file_path = Path(__file__).parent / "newfile.mp3"
 
