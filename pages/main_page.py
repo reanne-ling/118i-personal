@@ -17,6 +17,7 @@ st.write(message)
 
 # for table of contents
 st.subheader('Table of Contents', divider= 'color')
+message = "Come explore our many resources! We aim to help streamline ur EIH process." 
 col1, col2, col3 = st.columns(3)
 with col1:
    st.page_link("main_page.py", label="Home", icon="🏠", disabled=True)
@@ -35,3 +36,7 @@ with col3:
 # Clear call-to-action: “Apply for Emergency Housing”
 
 # general crisis hotline or emergency contacts displayed prominently
+st.subheader('Emergency Contacts')
+message = "If you are seeking emergency hotlines, here are some contacts!"
+message += "If you want to see more tailored resources, check out our resources page!"
+st.page_link("pages/page_4.py", label="Resources & Help", icon="🆘")

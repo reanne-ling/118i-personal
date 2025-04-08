@@ -5,3 +5,8 @@
 
 # GOAL: 
     create an application that can help current and potential EIH users access resources and help make their process easier. 
+
+# note: 
+i think the translator and the speech bot can be placed in the same page.
+it can reduce the excess space and it will look a bit more cohesive. 
+it can go under as translator and speech
