@@ -22,5 +22,7 @@ with col2:
    st.page_link("pages/page_3.py", label="Page 3", icon="3")
 
 with col3:
-   st.page_link("pages/page_4.py", label="Translations (but this is from prof's)", icon="4")
-   st.page_link("pages/page_5.py", label="Resources & Help", icon="5")
+   st.page_link("pages/page_4.py", label="Resources & Help", icon="5")
+   st.page_link("pages/page_5.py", label="Translations (but this is from prof's)", icon="4")
+   st.page_link("pages/page_6.py", label="SpeechBot", icon="4")
+

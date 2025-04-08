@@ -1,28 +1,55 @@
-import streamlit as st
-import pandas as pd 
-import numpy as np
 import openai
+import os
+import openai
+import streamlit as st
+import requests
+from openai import OpenAI
 
-st.markdown("# Resources & Help")
-st.sidebar.markdown("# Resources & Help")
+st.markdown("# Page 4: Translation ❄️")
+st.sidebar.markdown("# Page 4: Translation ❄️")
 
-st.header('Resource Locations', divider='color')
+st.subheader('This tool can help you translate anything ' \
+'you may need.', divider= 'color')
 
-st.subheader('Shelters', divider= 'color')
-df = pd.DataFrame(
-    np.random.randn(1000, 2) / [50, 50] + [37.33, -121.88],
-    columns=['lat', 'lon'])
-st.map(df)
-st.link_button("Click for more map examples", "https://docs.streamlit.io/develop/api-reference/charts/st.map")
+# Create two radio buttons
+source_language = st.radio('Select Source language', ['English', 'French', 'German'])
+target_language = st.radio('Select Target language', ['English', 'French', 'German'])
 
-st.subheader('Local Food Banks', divider= 'color')
+# Create a text input field
+text = st.text_input('Enter the text you want to translate: ')
 
-st.subheader('Legal Aid', divider= 'color')
+# Create a button
+if st.button('Submit'):
+    # Print the input from the text field and radio buttons
+    st.write(f'You entered: {text}')
+    st.write(f'Source language: {source_language}')
+    st.write(f'Target language: {target_language}')
 
-st.subheader('Medical Care', divider= 'color')
 
-st.subheader('Crisis Lines', divider= 'color')
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
-# domestic violence, suicide prevention
+client = OpenAI()
 
-st.subheader('Transportation Support', divider= 'color')
+
+def translate(text, source_language = "English", target_language = "French"):
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role": "system",
+                "content": "You will be provided with a sentence in "+ source_language
+                +", and your task is to translate it into " + target_language 
+            },
+            {
+                "role": "user",
+                "content": text
+            }
+        ],
+        temperature=0.7,
+        max_tokens=64,
+        top_p=1
+    )
+    
+    return response.choices[0].message.content
+
+st.write(translate(text, source_language, target_language))
