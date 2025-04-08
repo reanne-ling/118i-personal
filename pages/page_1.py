@@ -8,6 +8,7 @@ st.sidebar.markdown("# Eligibility & Requirements")
 
 st.subheader('Qualifications for EIH', divider= 'color')
 
+
 st.subheader('Required Documents', divider= 'color')
 
 st.subheader('FAQs for common situations', divider= 'color')
