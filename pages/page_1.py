@@ -11,6 +11,7 @@ st.title('Eligibility & Requirements 📋')
 st.write('Learn about who qualifies for emergency interim housing,' \
 ' what documents you will need, and how to prepare for the application process.')
 
+
 # introduction
 st.write(
 'Welcome to the Emergency Interim Housing (EIH) program information page. Here, you ' \

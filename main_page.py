@@ -44,4 +44,4 @@ st.page_link("pages/page_4.py", label="Resources & Help", icon="🆘")
 
 # footer
 st.markdown("---")
-st.caption("Provided by the Sapphire Team 💎")
+st.caption("Provided by the Sapphire Team 💎")st.caption("Provided by the Sapphire Team 💎")
