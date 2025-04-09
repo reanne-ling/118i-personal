@@ -35,11 +35,19 @@ with col2:
 # Clear call-to-action: “Apply for Emergency Housing”
 
 # general crisis hotline or emergency contacts displayed prominently
+# for contact info for the shelter hotline
 st.subheader('Emergency Contacts', divider= 'blue')
-message = "If you are seeking emergency hotlines, here are some contacts!"
-message += " If you want to see more tailored resources, check out our resources page!"
-st.write(message)
+st.write = "If you are seeking emergency hotlines, here are some contacts!"
+st.markdown('''
+For further assistance or inquiries: 
+            
+- **Here4You Shelter Hotline**: **(408) 385-2400** (Available daily from 9:00 AM to 7:00 PM)
+- **Email**: [homewardbound@sanjoseca.gov](mailto:homewardbound@sanjoseca.gov)
+- **Address**: 200 E. Santa Clara St., San José, CA 95113
+- **TTY**: **(800) 735-2922**
+''')
 
+st.write = " If you want to see more tailored resources, check out our resources page!"
 st.page_link("pages/page_4.py", label="Resources & Help", icon="🆘")
 
 # footer

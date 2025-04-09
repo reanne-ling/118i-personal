@@ -116,16 +116,6 @@ st.markdown(
 - **Emergency Shelters**: For immediate shelter needs, contact the Here4You Hotline at **(408) 385-2400**. [More information](https://osh.sccgov.org/solutions-homelessness/interim-solutions/emergency-shelters)
 ''')
 
-# for contact info for the shelter hotline
-st.subheader('Contact Information', divider= 'blue')
-st.write('For further assistance or inquiries:')
-st.markdown('''
-- **Here4You Shelter Hotline**: **(408) 385-2400** (Available daily from 9:00 AM to 7:00 PM)
-- **Email**: [homewardbound@sanjoseca.gov](mailto:homewardbound@sanjoseca.gov)
-- **Address**: 200 E. Santa Clara St., San José, CA 95113
-- **TTY**: **(800) 735-2922**
-''')
-
 # footer
 st.markdown("---")
 st.caption("Provided by the Sapphire Team 💎")
