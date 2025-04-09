@@ -3,20 +3,21 @@ import pandas as pd
 import numpy as np
 import openai
 
-st.markdown("# Resources & Help 🆘 ")
+# for it to pop up on the sidebar
 st.sidebar.markdown("# Resources & Help 🆘 ")
 
 # page title
 st.title('Resources & Help 🆘 ')
-st.subheader('For individuals seeking emergency interim housing and support services in San Jose, CA!')
+st.write('For individuals seeking emergency interim housing and support services in San Jose, CA!')
 
 # title for san jose resources
-st.header('Resource Locations', divider='color')
-message = 'These reosurces are mainly listed for the San Jose/Santa Clara County area.'
+st.subheader('Resource Locations', divider='blue')
+message = 'These resources are mainly listed for the San Jose/Santa Clara County area.'
+st.write(message)
 
 # ----------------------------------------------------------------
 # for shelter locations
-st.subheader('Emergency Shelters', divider= 'color')
+st.subheader('Emergency Shelters', divider= 'blue')
 
 df = pd.DataFrame(
     np.random.randn(1000, 2) / [50, 50] + [37.33, -121.88],
@@ -39,7 +40,7 @@ st.markdown('''
 # ----------------------------------------------------------------
 
 # for local food banks and basic needs
-st.subheader('Local Food Banks & Basic Needs', divider= 'color')
+st.subheader('Local Food Banks & Basic Needs', divider= 'blue')
 st.markdown('''
 - **[Second Harvest of Silicon Valley](https://www.shfb.org/)**  
   Services: Free groceries, food pantries  
@@ -49,11 +50,11 @@ st.markdown('''
 
 # ----------------------------------------------------------------
 #for legal aid services
-st.subheader('Legal Aid', divider= 'color')
+st.subheader('Legal Aid', divider= 'blue')
 # ----------------------------------------------------------------
 
 # for medical care resources
-st.subheader('Medical Care', divider= 'color')
+st.subheader('Medical Care', divider= 'blue')
 st.markdown('''
 - **[Gardner Health Services](https://gardnerhealthservices.org/)**  
   Services: Primary care, behavioral health, substance use treatment  
@@ -62,43 +63,75 @@ st.markdown('''
 ''')
 
 # for crisis resources
-st.subheader('Crisis Lines', divider= 'color')
-st.subheader('Domestic Violence & Safety')
-st.markdown('''
-- **[Next Door Solutions](https://nextdoorsolutions.org/)**  
-  24/7 Hotline: (408) 279-2962  
-- **[YWCA Silicon Valley](https://www.ywca-sv.org/)**  
-  Services: Safe housing, advocacy, counseling
-''')
-st.subheader('Mental Health Support')
-st.markdown('''
-- **[988 Suicide & Crisis Lifeline]**
-  Website:   (https://www.988lifeline.org/)  
-  Call/Text: 988 (24/7, Free, Confidential)
-- **[NAMI (National Alliance on Mental Illness)]**
-  Website:   (https://www.nami.org/)  
-  Helpline:  1-800-950-NAMI (6564)
-''')
-st.subheader('Veterans Crisis Line')
-st.markdown('''
-- **[Veterans Crisis Line]**
-  Website: (https://www.veteranscrisisline.net/)  
-  Call:    Dial 988 then press 1  
-  Text:    838255
-''')
-st.subheader('Human Trafficking Hotline')
-st.markdown('''
-- **[Human Trafficking Hotline]**
-  Website: (https://humantraffickinghotline.org/)  
-  Call:    1-888-373-7888  
-  Text:    “HELP” to 233733
-''')
+st.subheader('Crisis Lines', divider= 'blue')
+
+col1, col2 = st.columns(2)
+
+with col1:
+  st.subheader('Domestic Violence & Safety')
+  st.markdown('''
+  - **[Next Door Solutions](https://nextdoorsolutions.org/)**  
+    24/7 Hotline: (408) 279-2962  
+  - **[YWCA Silicon Valley](https://www.ywca-sv.org/)**  
+    Services: Safe housing, advocacy, counseling
+  ''')
+  st.subheader('Veterans Crisis Line')
+  st.markdown('''
+  - **[Veterans Crisis Line](https://www.veteranscrisisline.net/)**  
+    Call:    Dial 988 then press 1  
+    Text:    838255
+  ''')
+
+
+with col2: 
+  st.subheader('Mental Health Support')
+  st.markdown('''
+  - **[988 Suicide & Crisis Lifeline](https://www.988lifeline.org/)**  
+    Call/Text: 988 (24/7, Free, Confidential)
+  - **[NAMI (National Alliance on Mental Illness)](https://www.nami.org/)**  
+    Helpline:  1-800-950-NAMI (6564)
+  ''')
+  st.subheader('Human Trafficking Hotline')
+  st.markdown('''
+  - **[Human Trafficking Hotline](https://www.humantraffickinghotline.org/)**  
+    Call:    1-888-373-7888  
+    Text:    “HELP” to 233733
+  ''')
 
 # ----------------------------------------------------------------
 # for transportation support
-st.subheader('Transportation Support', divider= 'color')
+st.subheader('Transportation Support', divider= 'blue')
+st.subheader('Local (San Jose / Santa Clara County)')
+st.markdown('''
+- **VTA Access Paratransit**  
+  A shared-ride service for people with disabilities who are unable to use VTA's fixed-route services.  
+  Website: https://www.vta.org/access-paratransit (this website does't work anymore)
+- **VTA Reduced Fare Clipper Card**  
+  Seniors, youth, and people with low income may qualify for discounted public transportation fares.  
+  Website: https://www.clippercard.com/ClipperWeb/
+- **Destination: Home – Transportation Assistance**  
+  Works with service providers to offer transportation vouchers and support as part of homelessness response.  
+  Website: https://destinationhomesv.org/
+- **Sacred Heart Community Service**  
+  Offers case management and can connect individuals with transportation assistance for job interviews, medical appointments, etc.  
+  Website: https://www.sacredheartcs.org/
+- **LifeMoves** (for referred clients)  
+  Sometimes provides limited transportation support like bus passes or shuttle services.  
+  Website: https://www.lifemoves.org/
+''')
+st.subheader('Statewide/National')
+st.markdown('''
+- **United Way 211**  
+  Call 2-1-1 or visit https://www.211.org for help finding transportation services near you based on ZIP code.
+- **Catholic Charities of Santa Clara County**  
+  Provides transportation help for seniors and low-income families as part of wraparound support.  
+  Website: https://www.catholiccharitiesscc.org
+- **Non-Emergency Medical Transportation (NEMT)**  
+  If you’re a Medi-Cal recipient, you may be eligible for free rides to medical appointments.  
+  Info: Call your Medi-Cal managed care provider.
+''')
 # ----------------------------------------------------------------
 
 # footer
 st.markdown("---")
-st.caption("Provided by the Sapphire Team")
+st.caption("Provided by the Sapphire Team 💎")

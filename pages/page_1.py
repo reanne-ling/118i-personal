@@ -3,12 +3,12 @@ import pandas as pd
 import numpy as np
 import openai
 
-st.markdown("# Eligibility & Requirement 📋")
+# for it to pop up on the sidebar
 st.sidebar.markdown("# Eligibility & Requirements 📋")
 
 # page title
-st.title('Eligibility & Requirement 📋')
-st.subheader('Learn about who qualifies for emergency interim housing,' \
+st.title('Eligibility & Requirements 📋')
+st.write('Learn about who qualifies for emergency interim housing,' \
 ' what documents you will need, and how to prepare for the application process.')
 
 # introduction
@@ -18,9 +18,9 @@ st.write(
 'available for individuals and families experiencing homelessness in San José and Santa Clara County.')
 
 # for the qualifications
-st.subheader('Qualifications for EIH', divider= 'color')
-st.markdown(
-'''To qualify for the EIH program, applicants must meet the following requirements:
+st.subheader('Qualifications for EIH', divider= 'blue')
+st.markdown('''
+To qualify for the EIH program, applicants must meet the following requirements:
 
 - **Residency**: Must be a resident of Santa Clara County.
 - **Homeless Status**: Must be currently experiencing homelessness.
@@ -35,10 +35,29 @@ st.markdown(
 ''')
 
 # for the req documents
-st.subheader('Required Documents', divider= 'color')
+st.subheader('Required Documents', divider= 'blue')
+st.markdown('''
+Here's a list of commonly required documents for EIH Applicants:
+1. **Valid Government-Issued Photo ID**
+    - e.g., Driver’s License, State ID, Passport
+2.  **Proof of Homelessness**
+    - Letter from a shelter, outreach worker, or case manager
+    - Self-certification form if no other proof is available
+3. **Proof of Income** (if any)
+    - Pay stubs, unemployment benefits, SSI/SSDI documentation
+    - Bank statements (optional, depending on program)
+4. **Referral from a Case Manager or Outreach Team**
+    - Required for most San Jose EIH placements (e.g., from Destination:Home, HomeFirst, or City outreach teams)
+5. **Social Security Card or Number**
+    - For background checks and service eligibility
+6. **Medical or Disability Documentation** (if applicable)
+    - To prioritize individuals with medical needs or vulnerabilities
+7. **Proof of Santa Clara County Residency** (sometimes optional)
+    - Mail, benefits documentation, or ID with a local address
+''')
 
 # for the app process
-st.subheader('Application Process', divider= 'color')
+st.subheader('Application Process', divider= 'blue')
 st.markdown(
 '''1. **Initial Contact**:
    - **Here4You Hotline**: Call **(408) 385-2400** between 9:00 AM and 7:00 PM, seven days a week, to connect with a representative who can assist with shelter placements. 
@@ -54,11 +73,39 @@ st.markdown(
 ''')
 
 # for the faq
-st.subheader('FAQs for common situations', divider= 'color')
-
+st.subheader('FAQs for common situations', divider= 'blue')
+st.markdown('''
+1. **Who is eligible for Emergency Interim Housing?**  
+    EIH is primarily for individuals and families experiencing homelessness 
+    who are referred by outreach teams or service providers in Santa Clara County.
+2.  **Do I need a referral to apply?**  
+    Yes, most EIH placements require a referral from a case manager, outreach team, 
+    or local nonprofit partner.
+3. **Is there a cost to stay in EIH?**  
+    No, EIH programs are typically funded by the City and County and are free for eligible residents.
+4. **How long can I stay in an EIH unit?**  
+    Length of stay varies, but it is designed to be temporary housing while residents 
+    transition into more permanent solutions.
+5. **Can I bring my pet?**  
+    Some EIH sites are pet-friendly. Please confirm with the site or your case manager.
+6. **What services are offered at EIH sites?**  
+    Residents typically have access to case management, meals, hygiene services, mental 
+    health support, and housing navigation.
+7. **Do I need to show proof of income?**  
+    Proof of income is not always required, but it may help case managers tailor support 
+    services or future housing plans.
+8. **Can I apply directly on this site?**  
+    No, direct applications are not accepted. You will need to connect with an outreach worker 
+    or case manager to start the process.
+9. **Is language assistance available?**  
+    Yes! Translation tools and speech bots are available on this site, and staff are trained to 
+    assist non-English speakers.
+10. **What if I don’t have all the documents?**  
+    Don’t worry—case managers can help you gather necessary documents or help you self-certify if needed.
+''')
 
 # for the references they can press/websites
-st.subheader('Additional References', divider= 'color')
+st.subheader('Additional References', divider= 'blue')
 st.markdown(
 '''- **Homeless Resource Guide**: A comprehensive guide to services available for individuals experiencing homelessness in San José.
   - [English Guide](https://www.sanjoseca.gov/your-government/departments-offices/housing/homelessness-response/homeless-families-individuals)
@@ -69,12 +116,15 @@ st.markdown(
 ''')
 
 # for contact info for the shelter hotline
-st.subheader('Contact Information')
-st.markdown(
-'''For further assistance or inquiries:
-
+st.subheader('Contact Information', divider= 'blue')
+st.write('For further assistance or inquiries:')
+st.markdown('''
 - **Here4You Shelter Hotline**: **(408) 385-2400** (Available daily from 9:00 AM to 7:00 PM)
 - **Email**: [homewardbound@sanjoseca.gov](mailto:homewardbound@sanjoseca.gov)
 - **Address**: 200 E. Santa Clara St., San José, CA 95113
 - **TTY**: **(800) 735-2922**
 ''')
+
+# footer
+st.markdown("---")
+st.caption("Provided by the Sapphire Team 💎")

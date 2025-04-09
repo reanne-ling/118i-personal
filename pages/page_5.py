@@ -5,23 +5,27 @@ import streamlit as st
 import requests
 from openai import OpenAI
 
-st.markdown("# Translator 🌍")
+# using openai api key to access 
+openai.api_key = os.environ["OPENAI_API_KEY"]
+client = OpenAI()
+
+# for it to pop up on the sidebar
 st.sidebar.markdown("# Translator 🌍")
 
 # page title
-st.title('Translator 🌍')
-st.subheader('Access real-time language support to help you understand forms, ' \
-'instructions, and key information—available in multiple languages.', divider= 'color')
+st.header('Translator 🌍', divider= 'blue')
+st.write('Access real-time language support to help you understand forms, ' \
+'instructions, and key information—available in multiple languages.')
 
-# Create two radio buttons
+# Create two selectbox buttons
 # these languages are based on local demogrpahic data within San Jose (Santa Clara County)
-source_language = st.radio('Select Source language', [
+source_language = st.selectbox('Select Source language', [
     'English', 'Spanish', 'French', 'Vietnamese', 
     'Mandarin', 'Cantonese', 'Tagalog', 'Korean', 'Hindi', 
     'Arabic', 'Russian', 'Farsi', 'Punjabi', 'Japanese', 
     'Portuguese', 'Thai'
     ])
-target_language = st.radio('Select Target language', [
+target_language = st.selectbox('Select Target language', [
     'English', 'Spanish', 'French', 'Vietnamese', 
     'Mandarin', 'Cantonese', 'Tagalog', 'Korean', 'Hindi', 
     'Arabic', 'Russian', 'Farsi', 'Punjabi', 'Japanese', 
@@ -38,11 +42,7 @@ if st.button('Submit'):
     st.write(f'Source language: {source_language}')
     st.write(f'Target language: {target_language}')
 
-# using openai api key to access 
-openai.api_key = os.environ["OPENAI_API_KEY"]
-client = OpenAI()
-
-
+# function to translate the text
 def translate(text, source_language = "English", target_language = "French"):
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -61,7 +61,9 @@ def translate(text, source_language = "English", target_language = "French"):
         max_tokens=64,
         top_p=1
     )
-    
     return response.choices[0].message.content
-
 st.write(translate(text, source_language, target_language))
+
+# footer
+st.markdown("---")
+st.caption("Provided by the Sapphire Team 💎")

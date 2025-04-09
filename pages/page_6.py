@@ -6,18 +6,21 @@ import requests
 from openai import OpenAI
 from pathlib import Path
 
-st.markdown("# SpeechBot 🔊")
+# using openai api key to access 
+openai.api_key = os.environ["OPENAI_API_KEY"]
+client = OpenAI()
+
+# for it to pop up on the sidebar
 st.sidebar.markdown("# SpeechBot 🔊")
 
 # page title
-st.title('SpeechBot 🔊')
-st.subheader('Use our voice assistant to ask questions and get help navigating resources ' \
-'hands-free. Great for accessibility and quick info!', divider= 'color')
+st.header('SpeechBot 🔊', divider='blue')
+message = ('Use our voice assistant to ask questions and get help navigating resources ' \
+'hands-free. Great for accessibility and quick info!')
+st.write(message)
 
+# creates a new audio file
 speech_file_path = Path(__file__).parent / "newfile.mp3"
-
-openai.api_key = os.environ["OPENAI_API_KEY"]
-client = OpenAI()
 
 def text_to_speech(text,path):
     response = client.audio.speech.create(
@@ -37,3 +40,7 @@ if st.button('Submit'):
     audio_file = open(speech_file_path, 'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/mp3')
+
+# footer
+st.markdown("---")
+st.caption("Provided by the Sapphire Team 💎")
