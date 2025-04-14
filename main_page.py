@@ -10,10 +10,9 @@ st.sidebar.markdown("# Home 🏠")
 st.title('SafeStay San Jóse (SS-SJ)')
 
 # introduction
-message = "Hi! Welcome to Our-program-name!" \
+st.write = "Hi! Welcome to Our-program-name!" \
 "We are here to aid you in your EIH needs."
-message += "Please come and explore our applications for your needs!"
-st.write(message)
+st.write += "Please come and explore our applications for your needs!"
 
 # for table of contents
 st.subheader('Table of Contents', divider= 'blue')

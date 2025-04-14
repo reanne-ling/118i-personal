@@ -8,13 +8,11 @@ st.sidebar.markdown("# Eligibility & Requirements 📋")
 
 # page title
 st.title('Eligibility & Requirements 📋')
-st.write('Learn about who qualifies for emergency interim housing,' \
-' what documents you will need, and how to prepare for the application process.')
+st.write('Learn about who qualifies for emergency interim housing, what documents you will need, and how to prepare for the application process.')
 
 
 # introduction
-st.write(
-'Welcome to the Emergency Interim Housing (EIH) program information page. Here, you ' \
+st.write('Welcome to the Emergency Interim Housing (EIH) program information page. Here, you ' \
 'will find details on eligibility criteria, the application process, and resources ' \
 'available for individuals and families experiencing homelessness in San José and Santa Clara County.')
 
