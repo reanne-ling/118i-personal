@@ -27,9 +27,7 @@ with col1:
 
 with col2:
    st.page_link("pages/page_4.py", label="Resources & Help", icon="🆘")
-   st.page_link("pages/page_5.py", label="Translator", icon="🌍")
-   st.page_link("pages/page_5-6.py", label="Language & Communication Tools", icon="💬")
-   st.page_link("pages/page_6.py", label="SpeechBot", icon="🔊")
+   st.page_link("pages/page_5.py", label="Language & Communication Tools", icon="💬")
 
 # button to apply for emergency housing or directed to it
 # Clear call-to-action: “Apply for Emergency Housing”
