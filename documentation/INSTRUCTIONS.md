@@ -11,7 +11,7 @@
 
 # to make sure its in the right path
     cd insert/path/for/this/file 
-   ie. /Users/name/Documents/GitHub/118i-sapphire-team
+   ie. /Users/reanne/Documents/GitHub/118i-sapphire-team
     ls : to check what is found in that folder 
 
 # launching: 

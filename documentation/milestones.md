@@ -1,10 +1,8 @@
 # Milestone #1 
     we included these features: 
 
-
 # Milestone 2
     we accomplished this: 
-
 
 # Milestone 3: 
     we have created a prototype applciations fulfilling these: 
