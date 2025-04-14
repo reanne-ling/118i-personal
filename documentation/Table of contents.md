@@ -4,5 +4,5 @@
     Page #2     =>    #  title
     Page #3     =>    #  title
     Page #4     =>    Resources & Help
-    Page #5     =>    Translator
-    Page #6     =>    SpeechBot
+    Page #5     =>    Language & Communication Tools
+    Page #6     =>    Reddit Sentiment Analyzer
