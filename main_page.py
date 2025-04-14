@@ -19,15 +19,19 @@ st.subheader('Table of Contents', divider= 'blue')
 message = "Come explore our many resources! We aim to help streamline ur EIH process." 
 col1, col2 = st.columns(2)
 with col1:
-   st.page_link("main_page.py", label="Home", icon="🏠", disabled=True)
    st.page_link("pages/page_1.py", label="Eligibility & Requirements", icon="📋")
    st.page_link("pages/page_2.py", label="AI Intake Assistant", icon="🧠")
-   st.page_link("pages/page_3.py", label="Page 3", icon="🔒")
-
-with col2:
+   st.page_link("pages/page_3.py", label="AI Housing Chat Assistant", icon="💬")
    st.page_link("pages/page_4.py", label="Resources & Help", icon="🆘")
    st.page_link("pages/page_5.py", label="Language & Communication Tools", icon="💬")
+
+
+with col2:
    st.page_link("pages/page_6.py", label="Reddit Sentiment Analyzer", icon="🔒")
+   st.page_link("pages/page_7.py", label="AI Resource Recommender", icon="🎯")
+   st.page_link("pages/page_8.py", label="Stakeholder Involvement", icon="🤝")
+   st.page_link("pages/page_9.py", label="EIH Budget Overview", icon="💰")
+
 
 # button to apply for emergency housing or directed to it
 # Clear call-to-action: “Apply for Emergency Housing”
