@@ -8,12 +8,11 @@ st.sidebar.markdown("# Resources & Help 🆘 ")
 
 # page title
 st.title('Resources & Help 🆘 ')
-st.write('For individuals seeking emergency interim housing and support services in San Jose, CA!')
+st.write = ('For individuals seeking emergency interim housing and support services in San Jose, CA!')
 
 # title for san jose resources
 st.subheader('Resource Locations', divider='blue')
-message = 'These resources are mainly listed for the San Jose/Santa Clara County area.'
-st.write(message)
+st.write = 'These resources are mainly listed for the San Jose/Santa Clara County area.'
 
 # ----------------------------------------------------------------
 # for shelter locations
