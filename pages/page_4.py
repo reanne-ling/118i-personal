@@ -12,7 +12,7 @@ st.write = ('For individuals seeking emergency interim housing and support servi
 
 # title for san jose resources
 st.subheader('Resource Locations', divider='blue')
-st.write = 'These resources are mainly listed for the San Jose/Santa Clara County area.'
+st.write = ('These resources are mainly listed for the San Jose/Santa Clara County area.')
 
 # ----------------------------------------------------------------
 # for shelter locations
