@@ -21,7 +21,7 @@ col1, col2 = st.columns(2)
 with col1:
    st.page_link("main_page.py", label="Home", icon="🏠", disabled=True)
    st.page_link("pages/page_1.py", label="Eligibility & Requirements", icon="📋")
-   st.page_link("pages/page_2.py", label="Page 2", icon="🔒")
+   st.page_link("pages/page_2.py", label="AI Intake Assistant", icon="🧠")
    st.page_link("pages/page_3.py", label="Page 3", icon="🔒")
 
 with col2:
