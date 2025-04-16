@@ -9,7 +9,6 @@ from openai import OpenAI
 st.sidebar.markdown("# AI Resource Recommender 🎯")
 
 
-st.set_page_config(page_title="AI Resource Recommender", layout="wide")
 st.title("🎯 AI Resource Recommender")
 st.caption("Select your needs and let AI recommend relevant services in your city.")
 
