@@ -16,4 +16,4 @@
     ls : to check what is found in that folder 
 
 # launching: 
-    streamlit run main_page.py
+    streamlit run Main_Page.py
