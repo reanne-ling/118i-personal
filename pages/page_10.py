@@ -64,7 +64,7 @@ def generate_application_help():
 
 # Streamlit UI
 st.title("Emergency Housing Assistance App")
-st.write("This AI-powered app helps you navigate urgent housing needs, visualize shelter options, and prepare your application.")
+st.text("This AI-powered app helps you navigate urgent housing needs, visualize shelter options, and prepare your application.")
 
 # User inputs
 situation = st.text_area("Describe Your Current Housing Situation", 
@@ -88,4 +88,4 @@ if st.button("Get Housing Assistance"):
         st.subheader("📄 Application Preparation Help")
         st.write(prep_help)
 
-st.caption("Created by the Sapphire Team • Powered by OpenAI & Streamlit")
+st.caption("Created by the Sapphire Team 💎 • Powered by OpenAI & Streamlit")
