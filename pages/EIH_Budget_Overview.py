@@ -6,11 +6,10 @@ import os
 # for it to pop up on the sidebar
 st.sidebar.markdown("# EIH Budget Overview 💰")
 
-# def main():
-    # Page setup
+# Page setup
 st.title("💰 EIH Budget Overview")
 
-    # Budget data
+# Budget data
 data = {
     'Category': [
         'Facility Leasing', 'Staff Wages', 'Food & Supplies',
@@ -20,16 +19,16 @@ data = {
     }
 df = pd.DataFrame(data)
 
-    # Show table and bar chart
+# Show table and bar chart
 st.header("📊 Budget Breakdown")
 st.dataframe(df)
 st.bar_chart(df.set_index("Category"))
 
-    # Total cost
+# Total cost
 total = df["Cost"].sum()
 st.metric("Total Budget", f"${total:,}")
 
-    # Funding
+# Funding
 st.header("💬 Funding Sources")
 funding_total = 1000000 + 800000 + 600000 + 300000
 st.write=("- HUD: $1,000,000")
@@ -37,7 +36,7 @@ st.write=("- State: $800,000")
 st.write=("- City: $600,000")
 st.write=("- Private: $300,000")
 
-    # Budget gap
+# Budget gap
 st.header("🧮 Budget Gap")
 gap = total - funding_total
 
@@ -45,12 +44,9 @@ if gap <= 0:
     st.success("Fully funded! 🎉")
 else:
     st.error(f"Shortfall: ${gap:,}")
-    st.write("Suggestions:")
-    st.write("- Apply for FEMA")
-    st.write("- Start donor campaign")
-
-# if __name__ == "__main__":
-    main()
+    st.write=("Suggestions:")
+    st.write=("- Apply for FEMA")
+    st.write=("- Start donor campaign")
 
 
 # footer
