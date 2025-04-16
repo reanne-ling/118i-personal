@@ -31,6 +31,7 @@ with col2:
    st.page_link("pages/page_7.py", label="AI Resource Recommender", icon="🎯")
    st.page_link("pages/page_8.py", label="Stakeholder Involvement", icon="🤝")
    st.page_link("pages/page_9.py", label="EIH Budget Overview", icon="💰")
+   st.page_link("pages/page_10.py", label="Prototype", icon="🔒")
 
 
 # button to apply for emergency housing or directed to it
