@@ -8,7 +8,6 @@ from openai import OpenAI
 # for it to pop up on the sidebar
 st.sidebar.markdown("# Stakeholder Involvement 🤝")
 
-st.set_page_config(page_title="Stakeholder Involvement", layout="wide")
 st.title("🤝 Stakeholder Roles in Emergency Interim Housing")
 st.caption("Understand how different sectors collaborate to support temporary housing solutions.")
 
