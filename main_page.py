@@ -8,7 +8,7 @@ import os
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # title
-st.title('SafeStay San Jóse (SS-SJ)')
+# st.title('SafeStay San Jóse (SS-SJ)')
 
 # introduction
 st.text ("Hi! Welcome to SafeStay San Jóse! We are here to aid you in your EIH needs.")
