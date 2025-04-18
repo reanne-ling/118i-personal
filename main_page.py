@@ -21,18 +21,16 @@ col1, col2 = st.columns(2)
 with col1:
    st.page_link("pages/AI_Housing_Chat_Assistant.py", label="AI Housing Chat Assistant", icon="💬")
    st.page_link("pages/AI_Intake_Assistant.py", label="AI Intake Assistant", icon="🧠")
-   st.page_link("pages/AI_Resource_Recommender.py", label="AI Resource Recommender", icon="🎯")
    st.page_link("pages/EIH_Budget_Overview.py", label="EIH Budget Overview", icon="💰")
    st.page_link("pages/Eligibility_&_Requirements.py", label="Eligibility & Requirements", icon="📋")
 
 
 with col2:
-   st.page_link("pages/Language_&_Communication_Tools.py", label="Language & Communication Tools", icon="💬")
+   st.page_link("pages/Language_&_Communication_Tools.py", label="Language & Communication Tools", icon="🔒💬")
    st.page_link("pages/Prototype.py", label="Prototype", icon="🔒")
-   st.page_link("pages/Reddit_Sentiment_Analyzer.py", label="Reddit Sentiment Analyzer", icon="🔒")
+   st.page_link("pages/Reddit_Sentiment_Analyzer.py", label="Reddit Sentiment Analyzer", icon="📊")
    st.page_link("pages/Resources_&_Help.py", label="Resources & Help", icon="🆘")
    st.page_link("pages/Stakeholder_Involvement.py", label="Stakeholder Involvement", icon="🤝")
-
 
 # button to apply for emergency housing or directed to it
 # Clear call-to-action: “Apply for Emergency Housing”

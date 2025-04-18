@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import openai
 import os
+from openai import OpenAI
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -14,13 +15,16 @@ st.sidebar.markdown("# Resources & Help 🆘 ")
 st.title('Resources & Help 🆘 ')
 st.text('For individuals seeking emergency interim housing and support services in San Jose, CA!')
 
+
+# Ai Resource recommender
 st.subheader("🎯 AI Resource Recommender", divider='blue')
 st.text("📦 Choose Your Needs")
 st.text("This AI-powered application will generate any resources tailored to your needs and area!")
 
 needs = st.multiselect(
     "Select the services you need help with:",
-    ["Meals", "Mental Health Support", "Job Assistance", "Medical Access", "Family Shelter", "Pet-Friendly Housing"]
+    ["Meals", "Mental Health Support", "Job Assistance", "Medical Access", 
+     "Family Shelter", "Pet-Friendly Housing"]
 )
 
 user_city = st.text_input("What city are you in?", placeholder="e.g., San Jose")
