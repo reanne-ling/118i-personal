@@ -8,10 +8,10 @@ import os
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # title
-# st.title('SafeStay San Jóse (SS-SJ)')
+st.title('SmartHaven')
 
 # introduction
-st.text ("Hi! Welcome to SafeStay San Jóse! We are here to aid you in your EIH needs.")
+st.text ("Hi! Welcome to SmartHaven! We are here to aid you in your EIH needs.")
 st.text("Please come and explore our applications for your needs!")
 
 # for table of contents
