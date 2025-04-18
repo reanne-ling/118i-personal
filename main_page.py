@@ -26,7 +26,7 @@ with col1:
 
 
 with col2:
-   st.page_link("pages/Language_&_Communication_Tools.py", label="Language & Communication Tools", icon="🔒💬")
+   st.page_link("pages/Language_&_Communication_Tools.py", label="Language & Communication Tools", icon="💬")
    st.page_link("pages/Prototype.py", label="Prototype", icon="🔒")
    st.page_link("pages/Reddit_Sentiment_Analyzer.py", label="Reddit Sentiment Analyzer", icon="📊")
    st.page_link("pages/Resources_&_Help.py", label="Resources & Help", icon="🆘")
