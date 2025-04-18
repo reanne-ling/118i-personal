@@ -50,7 +50,7 @@ For further assistance or inquiries:
 - **TTY**: **(800) 735-2922**
 ''')
 
-st.write = " If you want to see more tailored resources, check out our resources page!"
+st.text("If you want to see more tailored resources, check out our resources page!")
 st.page_link("pages/Resources_&_Help.py", label="Resources & Help", icon="🆘")
 
 # footer
