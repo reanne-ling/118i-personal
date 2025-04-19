@@ -1,11 +1,9 @@
 import streamlit as st
 import pandas as pd 
 import numpy as np
-import openai
 from openai import OpenAI
-import os
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # title
 st.title('SmartHaven')
@@ -87,7 +85,7 @@ if user_input:
                 role = "user" if sender == "You" else "assistant"
                 messages.append({"role": role, "content": message})
 
-            response = openai.ChatCompletion.create(
+            response = client.chat.completions.create(
                 model="gpt-4",
                 messages=messages,
                 temperature=0.6,

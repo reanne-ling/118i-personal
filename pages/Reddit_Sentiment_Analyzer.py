@@ -1,17 +1,13 @@
 import streamlit as st
 import praw
-import openai
-import os
+from openai import OpenAI
 
-# Set your OpenAI API key (safely stored as an environment variable or use st.secrets)
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Initialize Reddit client
 reddit = praw.Reddit(
-    client_id=os.getenv("REDDIT_CLIENT_ID"),
-    client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
-    username=os.getenv("REDDIT_USERNAME"),
-    password=os.getenv("REDDIT_PASSWORD"),
+    client_id=st.secrets["REDDIT_CLIENT_ID"],
+    client_secret=st.secrets["REDDIT_CLIENT_SECRET"],
     user_agent="reddit_sentiment_app"
 )
 
@@ -49,7 +45,7 @@ if st.button("Analyze"):
                 continue
 
             try:
-                response = openai.ChatCompletion.create(
+                response = client.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
                         {"role": "system", "content": "You are a helpful sentiment analysis tool."},
@@ -97,7 +93,7 @@ if user_input:
                 role = "user" if sender == "You" else "assistant"
                 messages.append({"role": role, "content": message})
 
-            response = openai.ChatCompletion.create(
+            response = client.chat.completions.create(
                 model="gpt-4",
                 messages=messages,
                 temperature=0.6,
