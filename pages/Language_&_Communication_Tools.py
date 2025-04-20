@@ -51,10 +51,11 @@ with col1:
         st.write(f'You entered: {text}')
         st.write(f'Source language: {source_language}')
         st.write(f'Target language: {target_language}')
+        st.session_state["translator_submitted"] = True
 
     # function to translate the text
     def translate(text, source_language = "English", target_language = "French"):
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {
@@ -72,7 +73,9 @@ with col1:
             top_p=1
         )
         return response.choices[0].message.content
-    st.write(translate(text, source_language, target_language))
+    
+    if text and st.session_state.get("translator_submitted"):
+        st.write(translate(text, source_language, target_language))
 
 # --------------------------------------------------------------------------------------------------------
 
@@ -93,11 +96,11 @@ with col2:
         response.stream_to_file(speech_file_path)
 
     # Create a text input field
-    text = st.text_input('Enter the text you would like to listen to')
+    tts_text = st.text_input('Enter the text you would like to listen to')
 
     # Create a button
     if st.button('Submit', key= 'submit_button_page_5_6'):
-        text_to_speech(text, speech_file_path)
+        text_to_speech(tts_text, speech_file_path)
 
         audio_file = open(speech_file_path, 'rb')
         audio_bytes = audio_file.read()
@@ -135,7 +138,7 @@ if user_input:
                 role = "user" if sender == "You" else "assistant"
                 messages.append({"role": role, "content": message})
 
-            response = openai.ChatCompletion.create(
+            response = openai.chat.completions.create(
                 model="gpt-4",
                 messages=messages,
                 temperature=0.6,
