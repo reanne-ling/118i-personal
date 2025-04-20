@@ -24,18 +24,24 @@ query = st.chat_input("e.g., Can I apply for shelter if I have a pet?")
 
 if query:
     with st.spinner("Thinking..."):
-        # Generate response from OpenAI
-        response = openai.chat.completions.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "You are an expert in emergency housing and social services."},
-                {"role": "user", "content": query}
-            ],
-            temperature=0.6,
-            max_tokens=500
-        )
-        st.write("🤖 AI says:")
-        st.markdown(response.choices[0].message.content.strip())
+        try:
+            # Generate response from OpenAI
+            response = openai.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "system", "content": "You are an expert in emergency housing and social services."},
+                    {"role": "user", "content": query}
+                ],
+                temperature=0.6,
+                max_tokens=500
+            )
+            st.write("🤖 AI says:")
+            if response and response.choices and response.choices[0].message.content:
+                st.markdown(response.choices[0].message.content.strip())
+            else:
+                st.warning("Received an empty response from the AI.")
+        except Exception as e:
+            st.error(f"⚠️ Something went wrong: {e}")
 
 # footer
 st.markdown("---")
