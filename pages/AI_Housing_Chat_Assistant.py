@@ -25,7 +25,7 @@ query = st.chat_input("e.g., Can I apply for shelter if I have a pet?")
 if query:
     with st.spinner("Thinking..."):
         # Generate response from OpenAI
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": "You are an expert in emergency housing and social services."},
@@ -69,7 +69,7 @@ if user_input.strip():
                 role = "user" if sender == "You" else "assistant"
                 messages.append({"role": role, "content": message})
 
-            response = openai.ChatCompletion.create(
+            response = openai.chat.completions.create(
                 model="gpt-4",
                 messages=messages,
                 temperature=0.6,
