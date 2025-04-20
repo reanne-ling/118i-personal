@@ -20,7 +20,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 st.markdown("---")
 st.header("🤔 Ask any housing-related question")
 
-query = st.chat_input("e.g., Can I apply for shelter if I have a pet?")
+query = st.text_input("Ask the AI Assistant something:", placeholder="e.g., Can I apply for shelter if I have a pet?")
 
 if query:
     with st.spinner("Thinking..."):
