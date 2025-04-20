@@ -1,3 +1,7 @@
+"""AI Intake Assistant
+Combines intake form, housing guidance, application tips, and image generation into one unified assistant.
+"""
+
 import streamlit as st
 import os
 import traceback
@@ -17,7 +21,7 @@ situation = st.text_area("💬 Describe your housing situation", "e.g., I lost m
 zip_code = st.text_input("📍 Enter your ZIP Code", "95112")
 urgency = st.slider("🚨 Urgency Level", 1, 5, 4)
 
-# --- AI Response Functions ---
+# --- AI Response Functions: guidance, tips, and shelter image ---
 def get_housing_guidance():
     prompt = f"""
     Emergency housing request:
@@ -33,7 +37,7 @@ def get_housing_guidance():
     """
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant for emergency housing support."},
                 {"role": "user", "content": prompt}
@@ -46,7 +50,7 @@ def get_housing_guidance():
 def get_application_tips():
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": "Help users prepare emergency housing documents."},
                 {"role": "user", "content": "List simple steps and documents needed for applying to emergency housing."}

@@ -1,5 +1,4 @@
-"""
-AI Housing Chat Assistant
+"""AI Housing Chat Assistant
 Streamlit app that allows users to chat with an AI assistant specialized in emergency housing and social services.
 """
 

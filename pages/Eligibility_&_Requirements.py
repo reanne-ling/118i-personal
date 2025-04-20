@@ -1,13 +1,13 @@
+"""
+Eligibility & Requirements Page
+Streamlit app that explains qualifications, required documents, and the application process for Emergency Interim Housing (EIH).
+"""
+
 import streamlit as st
 import pandas as pd 
 import numpy as np
 import openai
 import os
-
-"""
-Eligibility & Requirements Page
-Streamlit app that explains qualifications, required documents, and the application process for Emergency Interim Housing (EIH).
-"""
 
 # for it to pop up on the sidebar
 st.sidebar.markdown("# Eligibility & Requirements 📋")
@@ -134,11 +134,15 @@ st.sidebar.write("Need help with Emergency Interim Housing (EIH)? Ask anything."
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
+# Display chat history in sidebar
+for sender, message in st.session_state.chat_history:
+    st.sidebar.markdown(f"**{sender}:** {message}")
+
 # user input area
-user_input = st.sidebar.text_input("You:", key="user_input", placeholder="e.g., Can I apply for shelter if I have a pet?")
+user_input = st.sidebar.text_input("You:", key="user_input", placeholder="e.g., Can I apply for shelter if I have a pet?").strip()
 
 # If user submits a message
-if user_input.strip():
+if user_input:
     # Add user message to chat history
     st.session_state.chat_history.append(("You", user_input))
 
@@ -152,19 +156,19 @@ if user_input.strip():
                 role = "user" if sender == "You" else "assistant"
                 messages.append({"role": role, "content": message})
 
-            response = openai.ChatCompletion.create(
+            response = openai.chat.completions.create(
                 model="gpt-4",
                 messages=messages,
                 temperature=0.6,
                 max_tokens=500
             )
 
-            bot_reply = response.choices[0].message.content.strip()
-            st.session_state.chat_history.append(("Bot", bot_reply))
+            ai_reply = response.choices[0].message.content.strip()
+            st.session_state.chat_history.append(("Bot", ai_reply))
 
         except Exception as e:
-            bot_reply = "⚠️ Sorry, I ran into an error. Please try again."
-            st.session_state.chat_history.append(("Bot", bot_reply))
+            ai_reply = "⚠️ Sorry, I ran into an error. Please try again."
+            st.session_state.chat_history.append(("Bot", ai_reply))
             st.error(f"Error: {e}")
 
 st.sidebar.markdown("---")

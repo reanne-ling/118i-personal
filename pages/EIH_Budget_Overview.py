@@ -1,6 +1,6 @@
-"""
-EIH Budget Overview
-Streamlit app page that displays a breakdown of Emergency Interim Housing (EIH) budget and funding gaps.
+"""EIH Budget Overview
+Streamlit app page that displays a breakdown of Emergency Interim Housing (EIH) budget and funding gaps,
+including an integrated chatbot assistant for support.
 """
 
 import streamlit as st
@@ -67,11 +67,14 @@ st.sidebar.write("Need help with Emergency Interim Housing (EIH)? Ask anything."
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
+for sender, message in st.session_state.chat_history:
+    st.sidebar.markdown(f"**{sender}:** {message}")
+
 # user input area
 user_input = st.sidebar.text_input("You:", key="user_input", placeholder="e.g., Can I apply for shelter if I have a pet?")
 
 # If user submits a message
-if user_input.strip():
+if user_input and user_input.strip():
     # Add user message to chat history
     st.session_state.chat_history.append(("You", user_input))
 
@@ -85,19 +88,19 @@ if user_input.strip():
                 role = "user" if sender == "You" else "assistant"
                 messages.append({"role": role, "content": message})
 
-            response = openai.ChatCompletion.create(
+            response = openai.chat.completions.create(
                 model="gpt-4",
                 messages=messages,
                 temperature=0.6,
                 max_tokens=500
             )
 
-            bot_reply = response.choices[0].message.content.strip()
-            st.session_state.chat_history.append(("Bot", bot_reply))
+            ai_reply = response.choices[0].message.content.strip()
+            st.session_state.chat_history.append(("Bot", ai_reply))
 
         except Exception as e:
-            bot_reply = "⚠️ Sorry, I ran into an error. Please try again."
-            st.session_state.chat_history.append(("Bot", bot_reply))
+            ai_reply = "⚠️ Sorry, I ran into an error. Please try again."
+            st.session_state.chat_history.append(("Bot", ai_reply))
             st.error(f"Error: {e}")
 
 st.sidebar.markdown("---")

@@ -23,49 +23,49 @@ col1, col2 = st.columns(2)
 
 with col1:
     # page title
-    st.header('Translator 🌍', divider= 'blue')
+    st.header('Translator 🌍', divider='blue')
     st.write('Access real-time language support to help you understand forms, ' \
-    'instructions, and key information—available in multiple languages.')
+              'instructions, and key information—available in multiple languages.')
 
     # Create two radio buttons
-    # these languages are based on local demogrpahic data within San Jose (Santa Clara County)
+    # these languages are based on local demographic data within San Jose (Santa Clara County)
     source_language = st.selectbox('Select Source language', [
-    'English', 'Spanish', 'French', 'Vietnamese', 
-    'Mandarin', 'Cantonese', 'Tagalog', 'Korean', 'Hindi', 
-    'Arabic', 'Russian', 'Farsi', 'Punjabi', 'Japanese', 
-    'Portuguese', 'Thai'
+        'English', 'Spanish', 'French', 'Vietnamese', 
+        'Mandarin', 'Cantonese', 'Tagalog', 'Korean', 'Hindi', 
+        'Arabic', 'Russian', 'Farsi', 'Punjabi', 'Japanese', 
+        'Portuguese', 'Thai'
     ])
     target_language = st.selectbox('Select Target language', [
-    'English', 'Spanish', 'French', 'Vietnamese', 
-    'Mandarin', 'Cantonese', 'Tagalog', 'Korean', 'Hindi', 
-    'Arabic', 'Russian', 'Farsi', 'Punjabi', 'Japanese', 
-    'Portuguese', 'Thai'
+        'English', 'Spanish', 'French', 'Vietnamese', 
+        'Mandarin', 'Cantonese', 'Tagalog', 'Korean', 'Hindi', 
+        'Arabic', 'Russian', 'Farsi', 'Punjabi', 'Japanese', 
+        'Portuguese', 'Thai'
     ])
 
     # Create a text input field
-    text = st.text_input('Enter the text you want to translate: ')
+    input_text = st.text_input('Enter the text you want to translate:')
 
     # Create a button
     if st.button('Submit'):
         # Print the input from the text field and radio buttons
-        st.write(f'You entered: {text}')
+        st.write(f'You entered: {input_text}')
         st.write(f'Source language: {source_language}')
         st.write(f'Target language: {target_language}')
         st.session_state["translator_submitted"] = True
 
     # function to translate the text
-    def translate(text, source_language = "English", target_language = "French"):
+    def translate(input_text, source_language="English", target_language="French"):
         response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {
                     "role": "system",
-                    "content": "You will be provided with a sentence in "+ source_language
-                    +", and your task is to translate it into " + target_language 
+                    "content": "You will be provided with a sentence in " + source_language
+                    + ", and your task is to translate it into " + target_language 
                 },
                 {
                     "role": "user",
-                    "content": text
+                    "content": input_text
                 }
             ],
             temperature=0.7,
@@ -74,20 +74,20 @@ with col1:
         )
         return response.choices[0].message.content
     
-    if text and st.session_state.get("translator_submitted"):
-        st.write(translate(text, source_language, target_language))
+    if input_text and st.session_state.get("translator_submitted"):
+        st.write(translate(input_text, source_language, target_language))
 
 # --------------------------------------------------------------------------------------------------------
 
 with col2: 
     # page title
-    st.header('SpeechBot 🔊', divider= 'blue')
+    st.header('SpeechBot 🔊', divider='blue')
     st.write('Use our voice assistant to ask questions and get help navigating resources ' \
-    'hands-free. Great for accessibility and quick info!')
+              'hands-free. Great for accessibility and quick info!')
 
     speech_file_path = Path(__file__).parent / "newfile.mp3"
 
-    def text_to_speech(text,path):
+    def text_to_speech(text, path):
         response = openai.audio.speech.create(
             model="tts-1",
             voice="nova",
@@ -96,10 +96,10 @@ with col2:
         response.stream_to_file(speech_file_path)
 
     # Create a text input field
-    tts_text = st.text_input('Enter the text you would like to listen to')
+    tts_text = st.text_input('Enter the text you would like to listen to:')
 
     # Create a button
-    if st.button('Submit', key= 'submit_button_page_5_6'):
+    if st.button('Submit', key='submit_button_page_5_6'):
         text_to_speech(tts_text, speech_file_path)
 
         audio_file = open(speech_file_path, 'rb')
@@ -119,6 +119,10 @@ st.sidebar.write("Need help with Emergency Interim Housing (EIH)? Ask anything."
 # Initialize chat history if not already present
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
+
+# Display chat history
+for sender, message in st.session_state.chat_history:
+    st.sidebar.markdown(f"**{sender}:** {message}")
 
 # user input area
 user_input = st.sidebar.text_input("You:", key="user_input", placeholder="e.g., Can I apply for shelter if I have a pet?")
@@ -145,10 +149,10 @@ if user_input:
                 max_tokens=500
             )
 
-            bot_reply = response.choices[0].message.content.strip()
-            st.session_state.chat_history.append(("Bot", bot_reply))
+            ai_reply = response.choices[0].message.content.strip()
+            st.session_state.chat_history.append(("Bot", ai_reply))
 
         except Exception as e:
-            bot_reply = "⚠️ Sorry, I ran into an error. Please try again."
-            st.session_state.chat_history.append(("Bot", bot_reply))
+            ai_reply = "⚠️ Sorry, I ran into an error. Please try again."
+            st.session_state.chat_history.append(("Bot", ai_reply))
             st.error(f"Error: {e}")
