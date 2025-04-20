@@ -1,99 +1,92 @@
 import streamlit as st
-import pandas as pd 
-import numpy as np
-import openai
 import os
+import traceback
 from openai import OpenAI
 
-"""
-AI Intake Assistant Page
-Streamlit app that allows users to describe their housing situation and receive AI-generated suggestions.
-"""
+# --- OpenAI Setup ---
+api_key = os.getenv("OPENAI_API_KEY") or "your-api-key-here"
+client = OpenAI(api_key=api_key)
 
-# for it to pop up on the sidebar
-st.sidebar.markdown("# AI Intake Assistant 🧠")
-
-
-# Set up the Streamlit page
-st.title("🧠 AI Intake Assistant")
-st.caption("Describe your housing situation. Let AI suggest next steps based on your story.")
-
+# --- Streamlit Page Setup ---
+st.title("🏠 Emergency Housing Assistant")
+st.caption("Get AI-generated guidance, shelter visuals, and application tips.")
 st.markdown("---")
-st.header("💬 Describe Your Current Situation")
 
-# Get user input
-user_input = st.text_area(
-    label="Enter details about your housing situation below:",
-    placeholder="e.g., I lost my job and can't pay rent. I have a dog and need shelter urgently.",
-    height=200
-)
+# --- User Input ---
+situation = st.text_area("💬 Describe your housing situation", "e.g., I lost my job and may be evicted soon. I have a daughter and no savings.")
+zip_code = st.text_input("📍 Enter your ZIP Code", "95112")
+urgency = st.slider("🚨 Urgency Level", 1, 5, 4)
 
-# Initialize OpenAI client (hardcoded for now, replace with os.getenv for production)
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# --- AI Response Functions ---
+def get_housing_guidance():
+    prompt = f"""
+    Emergency housing request:
+    Situation: {situation}
+    ZIP Code: {zip_code}
+    Urgency: {urgency}/5
 
-# Analyze button
-if st.button("🧠 Analyze and Get Recommendations"):
-    if not user_input.strip():
-        st.warning("Please write something about your situation.")
+    Please provide:
+    1. Immediate shelter options
+    2. Documents needed
+    3. Steps to take in 48 hours
+    4. Community resources
+    """
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant for emergency housing support."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        return f"❌ Error: {e}\n\n{traceback.format_exc()}"
+
+def get_application_tips():
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "Help users prepare emergency housing documents."},
+                {"role": "user", "content": "List simple steps and documents needed for applying to emergency housing."}
+            ]
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        return f"❌ Error: {e}\n\n{traceback.format_exc()}"
+
+def get_shelter_image():
+    try:
+        image = client.images.generate(
+            model="dall-e-2",
+            prompt="A clean and calm temporary shelter room with beds and warm lighting for a parent and child.",
+            n=1,
+            size="1024x1024"
+        )
+        return image.data[0].url
+    except Exception as e:
+        st.error("❌ Error generating image.")
+        st.code(traceback.format_exc())
+        return None
+
+# --- Main Action ---
+if st.button("🧠 Get Emergency Help"):
+    if not situation.strip():
+        st.warning("Please describe your housing situation.")
     else:
-        with st.spinner("AI is reading your story..."):
-            response = client.chat.completions.create(
-                model="gpt-4",
-                messages=[
-                    {"role": "system", "content": "You're a social worker AI helping people find emergency housing."},
-                    {"role": "user", "content": f"My situation: {user_input}\nWhat emergency housing steps should I take?"}
-                ]
-            )
-            result = response.choices[0].message.content
-            st.success("✅ Suggested Steps:")
-            st.markdown(result)
+        with st.spinner("Getting AI help..."):
+            st.subheader("📋 Housing Guidance")
+            st.markdown(get_housing_guidance())
 
-# footer
+            st.subheader("📄 Application Tips")
+            st.markdown(get_application_tips())
+
+            st.subheader("🏠 Sample Shelter Preview")
+            image_url = get_shelter_image()
+            if image_url:
+                st.image(image_url, use_container_width=True)
+
+# --- Footer ---
 st.markdown("---")
-st.caption("Provided by the Sapphire Team 💎 • Powered by OpenAI & Streamlit")
-
-#------------------------------------------------------------------------------------------------------------------------------------------------------
-
-# chatbot on the side
-st.sidebar.title("💬 HelpBot")
-st.sidebar.write("Need help with Emergency Interim Housing (EIH)? Ask anything.")
-
-# Initialize chat history if not already present
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
-
-# user input area
-user_input = st.sidebar.text_input("You:", key="user_input", placeholder="e.g., Can I apply for shelter if I have a pet?")
-
-# If user submits a message
-if user_input.strip():
-    # Add user message to chat history
-    st.session_state.chat_history.append(("You", user_input))
-
-    # Generate AI response using OpenAI
-    with st.spinner("Thinking..."):
-        try:
-            messages = [{"role": "system", "content": "You are a helpful assistant that specializes in Emergency Interim Housing (EIH) in San Jose and Santa Clara County. Be concise, helpful, and clear."}]
-            
-            # Add all previous messages to maintain context
-            for sender, message in st.session_state.chat_history:
-                role = "user" if sender == "You" else "assistant"
-                messages.append({"role": role, "content": message})
-
-            response = openai.ChatCompletion.create(
-                model="gpt-4",
-                messages=messages,
-                temperature=0.6,
-                max_tokens=500
-            )
-
-            bot_reply = response.choices[0].message.content.strip()
-            st.session_state.chat_history.append(("Bot", bot_reply))
-
-        except Exception as e:
-            bot_reply = "⚠️ Sorry, I ran into an error. Please try again."
-            st.session_state.chat_history.append(("Bot", bot_reply))
-            st.error(f"Error: {e}")
-
-st.sidebar.markdown("---")
-st.sidebar.caption("Developed by the Sapphire Team 💎")
+st.caption("Created by Sapphire Team 💎 | Powered by OpenAI & Streamlit")
