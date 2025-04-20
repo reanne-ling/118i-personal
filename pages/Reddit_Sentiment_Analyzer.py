@@ -45,7 +45,7 @@ if st.button("Analyze"):
                 continue
 
             try:
-                response = client.chat.completions.create(
+                response = client.ChatCompletion.create(
                     model="gpt-3.5-turbo",
                     messages=[
                         {"role": "system", "content": "You are a helpful sentiment analysis tool."},
@@ -93,7 +93,7 @@ if user_input:
                 role = "user" if sender == "You" else "assistant"
                 messages.append({"role": role, "content": message})
 
-            response = client.chat.completions.create(
+            response = client.ChatCompletion.create(
                 model="gpt-4",
                 messages=messages,
                 temperature=0.6,

@@ -20,7 +20,7 @@ def generate_housing_guidance(situation, zip_code, urgency):
     4. Community resources or support services they can contact
     """
     
-    response = openai.chat.completions.create(
+    response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are an empathetic AI that helps users navigate emergency housing."},
@@ -32,7 +32,7 @@ def generate_housing_guidance(situation, zip_code, urgency):
 
 # Feature 2: Housing Space Visualization (Image Generation)
 def generate_shelter_image():
-    response = openai.images.generate(
+    response = openai.Image.create(
         model="dall-e-2",
         prompt="A safe, clean, temporary shelter for a single parent and child. Warm lighting, basic amenities, calming colors.",
         n=1,
@@ -52,7 +52,7 @@ def generate_application_help():
     Make this beginner-friendly and anxiety-free.
     """
     
-    response = openai.chat.completions.create(
+    response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a calm, friendly assistant helping users prepare their documents."},

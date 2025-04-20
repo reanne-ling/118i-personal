@@ -1,3 +1,8 @@
+"""
+EIH Budget Overview
+Streamlit app page that displays a breakdown of Emergency Interim Housing (EIH) budget and funding gaps.
+"""
+
 import streamlit as st
 import pandas as pd
 import openai
@@ -31,10 +36,10 @@ st.metric("Total Budget", f"${total:,}")
 # Funding
 st.header("💬 Funding Sources")
 funding_total = 1000000 + 800000 + 600000 + 300000
-st.write=("- HUD: $1,000,000")
-st.write=("- State: $800,000")
-st.write=("- City: $600,000")
-st.write=("- Private: $300,000")
+st.write("- HUD: $1,000,000")
+st.write("- State: $800,000")
+st.write("- City: $600,000")
+st.write("- Private: $300,000")
 
 # Budget gap
 st.header("🧮 Budget Gap")
@@ -44,10 +49,9 @@ if gap <= 0:
     st.success("Fully funded! 🎉")
 else:
     st.error(f"Shortfall: ${gap:,}")
-    st.write=("Suggestions:")
-    st.write=("- Apply for FEMA")
-    st.write=("- Start donor campaign")
-
+    st.write("Suggestions:")
+    st.write("- Apply for FEMA")
+    st.write("- Start donor campaign")
 
 # footer
 st.markdown("---")
@@ -67,7 +71,7 @@ if "chat_history" not in st.session_state:
 user_input = st.sidebar.text_input("You:", key="user_input", placeholder="e.g., Can I apply for shelter if I have a pet?")
 
 # If user submits a message
-if user_input:
+if user_input.strip():
     # Add user message to chat history
     st.session_state.chat_history.append(("You", user_input))
 
@@ -95,3 +99,6 @@ if user_input:
             bot_reply = "⚠️ Sorry, I ran into an error. Please try again."
             st.session_state.chat_history.append(("Bot", bot_reply))
             st.error(f"Error: {e}")
+
+st.sidebar.markdown("---")
+st.sidebar.caption("Developed by the Sapphire Team 💎")

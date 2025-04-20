@@ -1,9 +1,7 @@
 import openai
 import os
-import openai
 import streamlit as st
 import requests
-from openai import OpenAI
 from pathlib import Path
 
 # for it to pop up on the sidebar
@@ -11,15 +9,14 @@ st.sidebar.markdown("# Language & Communication Tools 💬")
 
 # using openai api key to access 
 openai.api_key = os.environ["OPENAI_API_KEY"]
-client = OpenAI()
 
 st.title('Language and Communication Tools')
-st.write = ('Need help understanding or speaking in a different language? This tool is here to help!')
+st.write('Need help understanding or speaking in a different language? This tool is here to help!')
 st.markdown('''
 - **Translate written information** into your preferred language.
 - **Convert text into speech**, so you can hear it out loud — perfect for those who prefer listening or have difficulty reading.
 ''')
-st.write = ('These features make it easier to communicate and understand important information when you are seeking help or services. Just select a language or press play!')
+st.write('These features make it easier to communicate and understand important information when you are seeking help or services. Just select a language or press play!')
 
 col1, col2 = st.columns(2)
 # --------------------------------------------------------------------------------------------------------
@@ -27,7 +24,7 @@ col1, col2 = st.columns(2)
 with col1:
     # page title
     st.header('Translator 🌍', divider= 'blue')
-    st.write = ('Access real-time language support to help you understand forms, ' \
+    st.write('Access real-time language support to help you understand forms, ' \
     'instructions, and key information—available in multiple languages.')
 
     # Create two radio buttons
@@ -57,7 +54,7 @@ with col1:
 
     # function to translate the text
     def translate(text, source_language = "English", target_language = "French"):
-        response = client.chat.completions.create(
+        response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
                 {
@@ -75,20 +72,20 @@ with col1:
             top_p=1
         )
         return response.choices[0].message.content
-    st.write = (translate(text, source_language, target_language))
+    st.write(translate(text, source_language, target_language))
 
 # --------------------------------------------------------------------------------------------------------
 
 with col2: 
     # page title
     st.header('SpeechBot 🔊', divider= 'blue')
-    st.write = ('Use our voice assistant to ask questions and get help navigating resources ' \
+    st.write('Use our voice assistant to ask questions and get help navigating resources ' \
     'hands-free. Great for accessibility and quick info!')
 
     speech_file_path = Path(__file__).parent / "newfile.mp3"
 
     def text_to_speech(text,path):
-        response = client.audio.speech.create(
+        response = openai.audio.speech.create(
             model="tts-1",
             voice="nova",
             input=text

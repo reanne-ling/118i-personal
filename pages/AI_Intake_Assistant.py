@@ -5,6 +5,11 @@ import openai
 import os
 from openai import OpenAI
 
+"""
+AI Intake Assistant Page
+Streamlit app that allows users to describe their housing situation and receive AI-generated suggestions.
+"""
+
 # for it to pop up on the sidebar
 st.sidebar.markdown("# AI Intake Assistant 🧠")
 
@@ -24,10 +29,10 @@ user_input = st.text_area(
 )
 
 # Initialize OpenAI client (hardcoded for now, replace with os.getenv for production)
-client = OpenAI(api_key="OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Analyze button
-if st.button("🧠 Analyze Situation and Suggest Help"):
+if st.button("🧠 Analyze and Get Recommendations"):
     if not user_input.strip():
         st.warning("Please write something about your situation.")
     else:
@@ -61,7 +66,7 @@ if "chat_history" not in st.session_state:
 user_input = st.sidebar.text_input("You:", key="user_input", placeholder="e.g., Can I apply for shelter if I have a pet?")
 
 # If user submits a message
-if user_input:
+if user_input.strip():
     # Add user message to chat history
     st.session_state.chat_history.append(("You", user_input))
 
@@ -89,3 +94,6 @@ if user_input:
             bot_reply = "⚠️ Sorry, I ran into an error. Please try again."
             st.session_state.chat_history.append(("Bot", bot_reply))
             st.error(f"Error: {e}")
+
+st.sidebar.markdown("---")
+st.sidebar.caption("Developed by the Sapphire Team 💎")

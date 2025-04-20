@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import openai
 import os
-from openai import OpenAI
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -37,7 +36,7 @@ if st.button("🔍 Get AI-Powered Resource Suggestions"):
     else:
         prompt = f"I'm in {user_city}. I need services for: {', '.join(needs)}. Recommend resources and a short explanation for each."
         with st.spinner("Finding personalized resources..."):
-            chat = openai.ChatCompletion.create(
+            response = openai.ChatCompletion.create(
                 model="gpt-4",
                 messages=[
                     {"role": "system", "content": "You're an AI that recommends real local services for housing and social support."},
@@ -45,7 +44,7 @@ if st.button("🔍 Get AI-Powered Resource Suggestions"):
                 ]
             )
             st.success("📋 AI Suggestions:")
-            st.markdown(chat.choices[0].message.content)
+            st.markdown(response.choices[0].message.content.strip())
 
 st.markdown("---")
 st.text('These resources listed below are mainly tailored for the San Jose/Santa Clara County area.')

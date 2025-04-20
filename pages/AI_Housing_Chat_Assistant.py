@@ -4,6 +4,11 @@ import numpy as np
 import openai
 import os
 
+"""
+AI Housing Chat Assistant
+Streamlit app that allows users to chat with an AI assistant specialized in emergency housing and social services.
+"""
+
 # for it to pop up on the sidebar
 st.sidebar.markdown("# AI Housing Chat Assistant 💬")
 
@@ -19,15 +24,18 @@ query = st.chat_input("e.g., Can I apply for shelter if I have a pet?")
 
 if query:
     with st.spinner("Thinking..."):
-        answer = openai.ChatCompletion.create(
+        # Generate response from OpenAI
+        response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": "You are an expert in emergency housing and social services."},
                 {"role": "user", "content": query}
-            ]
+            ],
+            temperature=0.6,
+            max_tokens=500
         )
         st.write("🤖 AI says:")
-        st.markdown(answer.choices[0].message.content)
+        st.markdown(response.choices[0].message.content.strip())
 
 # footer
 st.markdown("---")
@@ -36,8 +44,8 @@ st.caption("Provided by the Sapphire Team 💎 • Powered by OpenAI & Streamlit
 #------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # chatbot on the side
-st.sidebar.title("💬 HelpBot")
-st.sidebar.write("Need help with Emergency Interim Housing (EIH)? Ask anything.")
+st.sidebar.markdown("## 💬 HelpBot")
+st.sidebar.write("Got questions about Emergency Interim Housing (EIH) in San Jose or Santa Clara County? Ask away below!")
 
 # Initialize chat history if not already present
 if "chat_history" not in st.session_state:
@@ -47,7 +55,7 @@ if "chat_history" not in st.session_state:
 user_input = st.sidebar.text_input("You:", key="user_input", placeholder="e.g., Can I apply for shelter if I have a pet?")
 
 # If user submits a message
-if user_input:
+if user_input.strip():
     # Add user message to chat history
     st.session_state.chat_history.append(("You", user_input))
 
@@ -75,3 +83,6 @@ if user_input:
             bot_reply = "⚠️ Sorry, I ran into an error. Please try again."
             st.session_state.chat_history.append(("Bot", bot_reply))
             st.error(f"Error: {e}")
+
+st.sidebar.markdown("---")
+st.sidebar.caption("Developed by the Sapphire Team 💎")
