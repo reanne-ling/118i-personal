@@ -1,3 +1,6 @@
+"""Main Landing Page
+Streamlit app landing page for SmartHaven, offering access to all EIH-related tools and chatbot support.
+"""
 import streamlit as st
 import pandas as pd 
 import numpy as np
@@ -9,8 +12,7 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 st.title('SmartHaven')
 
 # introduction
-st.text ("Hi! Welcome to SmartHaven! We are here to aid you in your EIH needs.")
-st.text("Please come and explore our applications for your needs!")
+st.markdown("👋 **Welcome to SmartHaven!** We're here to support your Emergency Interim Housing (EIH) journey. Explore the tools below to get started.")
 
 # for table of contents
 st.subheader('Table of Contents', divider= 'blue')
@@ -36,7 +38,7 @@ with col2:
 # general crisis hotline or emergency contacts displayed prominently
 # for contact info for the shelter hotline
 st.subheader('Emergency Contacts', divider= 'blue')
-st.write = "If you are seeking emergency hotlines, here are some contacts!"
+st.write("If you are seeking emergency hotlines, here are some contacts!")
 st.markdown('''
 For further assistance or inquiries: 
             
@@ -120,8 +122,8 @@ if user_input:
             st.sidebar.error(f"API Error: {e}")
 
 # Display full chat history in the sidebar
-#   for sender, message in st.session_state.chat_history:
-#      if sender == "You":
-#         st.sidebar.markdown(f"🧍 **{sender}:** {message}")
-#      else:
-#         st.sidebar.markdown(f"🤖 **{sender}:** {message}")
+for sender, message in st.session_state.chat_history:
+    if sender == "You":
+        st.sidebar.markdown(f"🧍 **{sender}:** {message}")
+    else:
+        st.sidebar.markdown(f"🤖 **{sender}:** {message}")

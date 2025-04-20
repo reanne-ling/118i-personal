@@ -1,3 +1,7 @@
+"""Reddit Sentiment Analyzer
+Streamlit app for analyzing the sentiment of recent Reddit posts by subreddit or keyword, including a sidebar chatbot for EIH support.
+"""
+
 import streamlit as st
 import praw
 from openai import OpenAI
@@ -45,7 +49,7 @@ if st.button("Analyze"):
                 continue
 
             try:
-                response = client.ChatCompletion.create(
+                response = client.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
                         {"role": "system", "content": "You are a helpful sentiment analysis tool."},
@@ -75,6 +79,10 @@ st.sidebar.write("Need help with Emergency Interim Housing (EIH)? Ask anything."
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
+# Display chat history
+for sender, message in st.session_state.chat_history:
+    st.sidebar.markdown(f"**{sender}:** {message}")
+
 # user input area
 user_input = st.sidebar.text_input("You:", key="user_input", placeholder="e.g., Can I apply for shelter if I have a pet?")
 
@@ -93,17 +101,17 @@ if user_input:
                 role = "user" if sender == "You" else "assistant"
                 messages.append({"role": role, "content": message})
 
-            response = client.ChatCompletion.create(
+            response = client.chat.completions.create(
                 model="gpt-4",
                 messages=messages,
                 temperature=0.6,
                 max_tokens=500
             )
 
-            bot_reply = response.choices[0].message.content.strip()
-            st.session_state.chat_history.append(("Bot", bot_reply))
+            ai_reply = response.choices[0].message.content.strip()
+            st.session_state.chat_history.append(("Bot", ai_reply))
 
         except Exception as e:
-            bot_reply = "⚠️ Sorry, I ran into an error. Please try again."
-            st.session_state.chat_history.append(("Bot", bot_reply))
+            ai_reply = "⚠️ Sorry, I ran into an error. Please try again."
+            st.session_state.chat_history.append(("Bot", ai_reply))
             st.error(f"Error: {e}")
