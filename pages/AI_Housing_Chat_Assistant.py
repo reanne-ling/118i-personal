@@ -1,13 +1,13 @@
+"""
+AI Housing Chat Assistant
+Streamlit app that allows users to chat with an AI assistant specialized in emergency housing and social services.
+"""
+
 import streamlit as st
 import pandas as pd 
 import numpy as np
 import openai
 import os
-
-"""
-AI Housing Chat Assistant
-Streamlit app that allows users to chat with an AI assistant specialized in emergency housing and social services.
-"""
 
 # for it to pop up on the sidebar
 st.sidebar.markdown("# AI Housing Chat Assistant 💬")
