@@ -1,15 +1,120 @@
 """Reddit Sentiment Analyzer
 Streamlit app for analyzing the sentiment of recent Reddit posts by subreddit or keyword, including a sidebar chatbot for EIH support.
 """
-
+import os
 import streamlit as st
 import praw
 from openai import OpenAI
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+import folium
+from folium.plugins import HeatMap
+from streamlit_folium import folium_static
+import spacy
+from functools import lru_cache
+
+# Load NLP model
+nlp = spacy.load("en_core_web_sm")
+
+# Static locations for more reliable heatmap pins
+
+
+# Convert sentiment string into numeric score
+
+SAN_JOSE_SPOTS = {
+    "Diridon Station": (37.3295, -121.9026),
+    "Kelley Park": (37.3208, -121.8469),
+    "Guadalupe River": (37.3425, -121.9010),
+    "Downtown San Jose": (37.3336, -121.8896),
+    "Reid-Hillview Airport": (37.3329, -121.8197),
+    "East San Jose": (37.3534, -121.8298),
+    "Roosevelt Park": (37.3476, -121.8676),
+    "San Jose Airport": (37.3639, -121.9289)
+}
+
+
+def match_known_location(text):
+    for place in SAN_JOSE_SPOTS:
+        if place.lower() in text.lower():
+            return place
+    return None
+
+
+def sentiment_score(text):
+    text = text.lower()
+    if "positive" in text:
+        return 1.0
+    elif "negative" in text:
+        return -1.0
+    elif "mixed" in text or "concern" in text or "inquisitive" in text or "neutral" in text:
+        return 0.5
+    else:
+        return 0.2  # treat as soft signal
+
+# Extract named location using spaCy
+@lru_cache(maxsize=100)
+def extract_place(text):
+    doc = nlp(text)
+    for ent in doc.ents:
+        if ent.label_ == "GPE":  # Geo-Political Entity
+            return ent.text.strip()
+    return None
+
+# Main map function
+def geo_sentiment_map(posts, default_location=(37.3382, -121.8863)):
+    m = folium.Map(location=default_location, zoom_start=13)
+    heat_data = []
+
+    for post in posts:
+        place = post.get("place")
+        sentiment = post.get("sentiment", "neutral")
+        coords = SAN_JOSE_SPOTS.get(place)
+
+        if not coords:
+            continue
+
+        score = sentiment_score(sentiment)
+        abs_score = abs(score)
+
+        # 🔥 Add to heatmap
+        if score != 0:
+            heat_data.append([coords[0], coords[1], abs_score])
+
+        # 📍 Add sentiment marker (color-coded)
+        if score > 0.5:
+            color = "green"
+        elif score < 0:
+            color = "red"
+        else:
+            color = "blue"
+
+        folium.Marker(
+            location=coords,
+            popup=f"{place} → {score}",
+            icon=folium.Icon(color=color)
+        ).add_to(m)
+
+    # 💡 Show heat layer
+    if heat_data:
+        from folium.plugins import HeatMap
+        HeatMap(
+            heat_data,
+            radius=15,
+            blur=25,
+            min_opacity=0.4
+        ).add_to(m)
+
+    # 🧪 Show map
+    folium_static(m)
+
+
+
+
+ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
 
 # Initialize Reddit client
 reddit = praw.Reddit(
+
     client_id=st.secrets["REDDIT_CLIENT_ID"],
     client_secret=st.secrets["REDDIT_CLIENT_SECRET"],
     user_agent="reddit_sentiment_app"
@@ -18,11 +123,25 @@ reddit = praw.Reddit(
 st.title("📊 Reddit Sentiment Analyzer")
 st.markdown("Analyze sentiment of recent Reddit posts from a specific subreddit or keyword.")
 
-# Input selection
-subreddit_name = st.text_input("Enter Subreddit (default is 'SanJose'):", value="SanJose")
-search_term = st.text_input("Enter a keyword (optional):")
 
-limit = st.slider("Number of posts to analyze", min_value=1, max_value=20, value=5)
+
+# Making a selection menu instead of text input
+subreddit_name = st.selectbox(
+    "Choose a subreddit:",
+    options=["SanJose", "santaclara", "Sunnyvale", "sanfrancisco",
+             "oakland", 'Fremont', 'SFhomeless', 'hayward'],
+    index=0
+)
+
+search_term = st.selectbox(
+    "Choose a keyword (optional):",
+    options=["tent", "encampment", "shelter", "housing", "crime", "safety",
+             "jobs", "mental health", "community", "sweeps",
+             "displacement", 'eviction', "homelessness"],
+    index=0
+)
+
+limit = st.slider("Number of posts to analyze", min_value=1, max_value=10000000, value=5)
 
 if st.button("Analyze"):
     with st.spinner("Fetching Reddit posts..."):
@@ -42,10 +161,19 @@ if st.button("Analyze"):
 
     if posts:
         st.success("Fetched posts. Analyzing sentiment...")
-        for idx, post in enumerate(posts, start=1):
-            text_to_analyze = f"{post['title']} {post['selftext']}".strip()
+        filtered_posts = []
 
-            if not text_to_analyze:
+        for post in posts:
+            content = f"{post['title']} {post['selftext']}"
+            place = match_known_location(content)
+            if not place:
+                continue  # Skip post if it doesn't mention a known location
+            post["matched_place"] = place
+            filtered_posts.append(post)
+
+        for idx, post in enumerate(filtered_posts, start=1):
+            content = f"{post['title']} {post['selftext']}".strip()
+            if not content:
                 continue
 
             try:
@@ -53,17 +181,24 @@ if st.button("Analyze"):
                     model="gpt-3.5-turbo",
                     messages=[
                         {"role": "system", "content": "You are a helpful sentiment analysis tool."},
-                        {"role": "user", "content": f"Analyze the sentiment of this Reddit post: {text_to_analyze}"}
+                        {"role": "user", "content": f"Analyze the sentiment of this Reddit post: {content}"}
                     ]
                 )
-
                 sentiment = response.choices[0].message.content
-                st.markdown(f"**Post #{idx}:** {post['title']}")
-                st.markdown(f"*Sentiment:* {sentiment}")
+                post["sentiment"] = sentiment
+                post["subreddit"] = subreddit_name
+                post["place"] = post["matched_place"]
+
+                st.markdown(f"**Post {idx}:** {post['title']}")
+                st.markdown(f"**Sentiment:** {sentiment}")
                 st.divider()
 
             except Exception as e:
-                st.warning(f"OpenAI error for post #{idx}: {e}")
+                st.warning(f"OpenAI error for post {idx}: {e}")
+                continue
+
+    st.subheader("📍 Sentiment by Location")
+    geo_sentiment_map(posts)
 
 # footer
 st.markdown("---")
