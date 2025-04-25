@@ -9,11 +9,7 @@ from openai import OpenAI
 import folium
 from folium.plugins import HeatMap
 from streamlit_folium import folium_static
-import spacy
-from functools import lru_cache
 
-# Load NLP model
-nlp = spacy.load("en_core_web_sm")
 
 # Static locations for more reliable heatmap pins
 
@@ -50,13 +46,12 @@ def sentiment_score(text):
     else:
         return 0.2  # treat as soft signal
 
-# Extract named location using spaCy
-@lru_cache(maxsize=100)
+# Simplified place extraction function
 def extract_place(text):
-    doc = nlp(text)
-    for ent in doc.ents:
-        if ent.label_ == "GPE":  # Geo-Political Entity
-            return ent.text.strip()
+    text = text.lower()
+    for place in SAN_JOSE_SPOTS:
+        if place.lower() in text:
+            return place
     return None
 
 # Main map function
