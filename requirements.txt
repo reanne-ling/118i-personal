@@ -3,3 +3,5 @@ pandas
 numpy
 openai
 praw
+folium
+streamlit-folium
