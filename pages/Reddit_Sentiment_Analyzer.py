@@ -109,7 +109,7 @@ def geo_sentiment_map(posts, default_location=(37.3382, -121.8863)):
 
 
 
- client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 
 # Initialize Reddit client
@@ -141,7 +141,7 @@ search_term = st.selectbox(
     index=0
 )
 
-limit = st.slider("Number of posts to analyze", min_value=1, max_value=10000000, value=5)
+limit = st.slider("Number of posts to analyze", min_value=1, max_value=100, value=10, step=1)
 
 if st.button("Analyze"):
     with st.spinner("Fetching Reddit posts..."):
