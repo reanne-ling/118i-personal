@@ -26,10 +26,13 @@ As DevOps Engineer, I was responsible for:
 Screenshots confirming API key revocation and auto-recharge deactivation are included in the `/security/` directory per course guidelines.
 
 ## 📂 Repo Structure
-- `/pages` – individual Streamlit app pages
-- `/utils` – helper functions and prompt logic
-- `/security` – API key safety screenshots
-- `main.py` – app entry point
+- `/pages/` – modular Streamlit pages for different features
+- `/archive/` – previous prototype version
+- `/documentation/` – internal goals and planning
+- `main_page.py` – unified entry point for app
+- `*.py` files – individual features: assistant, housing chatbot, service recommender, budget, stakeholder input
+- `requirements.txt` – dependencies for deployment
+- `setup.sh` – streamlined setup for dev environment
 
 ## 🚀 How to Run
 1. Clone the repo  
