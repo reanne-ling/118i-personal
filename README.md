@@ -8,7 +8,7 @@ BUS4-118i, Spring '25 – San José State University
 ## 🎥 Demo & Presentation
 
 - 📽️ [SmartHaven Demo Video](https://docs.google.com/file/d/1t693dj6CqUlb_MUc_4iyYmRMWd4ZfAUk/preview)  
-- 🖥️ [Final Slide Deck](https://docs.google.com/presentation/d/1-5HBpcy_RAxaVdDiQ-VgAe2oxf7gBXv56v30LPr4k08/edit?usp=sharing)
+- 🖥️ [SmartHaven Capstone Slide Deck](https://docs.google.com/presentation/d/1-5HBpcy_RAxaVdDiQ-VgAe2oxf7gBXv56v30LPr4k08/edit?usp=sharing)
 ---
 
 **Role**: DevOps Engineer  
