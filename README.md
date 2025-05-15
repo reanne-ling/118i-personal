@@ -7,7 +7,7 @@ BUS4-118i, Spring '25 – San José State University
 ## 📌 Overview
 SmartHaven is a generative AI-powered platform built to support Emergency Interim Housing (EIH) users in Santa Clara County. The application provides case managers and vulnerable populations with real-time housing resources, a sentiment analysis tool, and a chatbot assistant to improve service delivery, transparency, and efficiency.
 
-## 👨‍💻 My Role: DevOps Engineer
+## 👨‍💻 My Role: DevOps Engineer (Justin)
 As DevOps Engineer, I was responsible for:
 - Hosting and deploying the multi-page Streamlit application
 - Standardizing code across the team to ensure compatibility
