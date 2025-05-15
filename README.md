@@ -1,8 +1,39 @@
-# 118i-sapphire-team
-BUS4-118i, Spring '25
+# SmartHaven – Emergency Interim Housing Support Platform  
+BUS4-118i, Spring '25 – San José State University
 
-# Project Title:
-EIH Support Application
+**Deployed App**: [smarthaven.streamlit.app](https://smarthaven.streamlit.app)  
+**Demo Video**: [Google Drive Demo](https://docs.google.com/file/d/1t693dj6CqUlb_MUc_4iyYmRMWd4ZfAUk/preview)
 
-# Description:
-This application is built to support Emergency Incident Handling (EIH) users by providing critical tools during emergencies. It helps users locate nearby shelters, access essential resources, analyze real-time situational data, and communicate through an integrated chatbot. Designed with usability in mind, the app empowers both the public and response teams to make informed decisions quickly, stay connected, and respond effectively in high-stress scenarios.
+## 📌 Overview
+SmartHaven is a generative AI-powered platform built to support Emergency Interim Housing (EIH) users in Santa Clara County. The application provides case managers and vulnerable populations with real-time housing resources, a sentiment analysis tool, and a chatbot assistant to improve service delivery, transparency, and efficiency.
+
+## 👨‍💻 My Role: DevOps Engineer
+As DevOps Engineer, I was responsible for:
+- Hosting and deploying the multi-page Streamlit application
+- Standardizing code across the team to ensure compatibility
+- Auditing and merging teammate contributions in GitHub
+- Leading prompt engineering using OpenAI's API and ChatGPT
+- Resolving environment inconsistencies across Python and OpenAI API versions
+- Contributing 23 commits related to deployment, formatting, debugging, and integration
+
+## 🛠️ Tools & Technologies
+- Python, Streamlit, GitHub
+- OpenAI API, ChatGPT
+- Reddit API (sentiment analysis)
+- Agile Methodology, Prompt Engineering
+
+## 🔐 API Key Management
+Screenshots confirming API key revocation and auto-recharge deactivation are included in the `/security/` directory per course guidelines.
+
+## 📂 Repo Structure
+- `/pages` – individual Streamlit app pages
+- `/utils` – helper functions and prompt logic
+- `/security` – API key safety screenshots
+- `main.py` – app entry point
+
+## 🚀 How to Run
+1. Clone the repo  
+2. Run `pip install -r requirements.txt`  
+3. Launch with `streamlit run main.py`  
+
+---
