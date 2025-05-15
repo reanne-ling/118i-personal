@@ -5,9 +5,11 @@ BUS4-118i, Spring '25 – San José State University
 - [smarthaven.streamlit.app](https://smarthaven.streamlit.app) – Primary deployment hosted and maintained by me  
 - [118i-sapphire-team.streamlit.app](https://118i-sapphire-team.streamlit.app) – Final iteration hosted by José
 
-## 🎥 Demo Video
+## 🎥 Demo & Presentation
 
-Watch the full demo: [SmartHaven Google Drive Video](https://docs.google.com/file/d/1t693dj6CqUlb_MUc_4iyYmRMWd4ZfAUk/preview)
+- 📽️ [SmartHaven Demo Video](https://docs.google.com/file/d/1t693dj6CqUlb_MUc_4iyYmRMWd4ZfAUk/preview)  
+- 🖥️ [Final Slide Deck](https://docs.google.com/presentation/d/1-5HBpcy_RAxaVdDiQ-VgAe2oxf7gBXv56v30LPr4k08/edit?usp=sharing)
+---
 
 **Role**: DevOps Engineer  
 **Team**: 118i-Sapphire-Team  
