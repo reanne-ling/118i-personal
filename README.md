@@ -1,10 +1,6 @@
 # SmartHaven – Crisis Housing, Reimagined with AI
 BUS4-118i Section 01, Spring '25
 
-## Applications:
-- [smarthaven.streamlit.app](https://smarthaven.streamlit.app) – application containing all of our activity and creation throughout process 
-- [118i-sapphire-team.streamlit.app](https://118i-sapphire-team.streamlit.app) – Final deployment altered to fit more admin needs
-
 ---
 
 ## 🔍 Project Overview
@@ -55,15 +51,9 @@ To comply with security best practices:
 
 ---
 
-## 🚀 How to Run Locally
-
-1. Clone this repository  
-2. Install dependencies:  
-   `pip install -r requirements.txt`  
-3. Run the app:  
-   `streamlit run main_page.py`
-
-## Links to our Videos and Presentation
+## Want to see our work in play? 
 
 [SmartHaven Demo Video](https://docs.google.com/file/d/1t693dj6CqUlb_MUc_4iyYmRMWd4ZfAUk/preview)  
 [SmartHaven Presentation](https://docs.google.com/presentation/d/1-5HBpcy_RAxaVdDiQ-VgAe2oxf7gBXv56v30LPr4k08/edit?usp=sharing)
+[smarthaven.streamlit.app](https://smarthaven.streamlit.app) – application containing all of our activity and creation throughout process 
+[118i-sapphire-team.streamlit.app](https://118i-sapphire-team.streamlit.app) – Final deployment altered to fit more admin needs
