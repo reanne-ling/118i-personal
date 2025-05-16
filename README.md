@@ -29,6 +29,8 @@ With **SmartHaven**, we aim to support individuals navigate Emergency Interim Ho
 - Helped lead the *Language & Communication Tools*
 - Aided peers on AI tools like the *Resource Recommender*, *Real-Time Availability Map*, and *AI ChatBot* with developing and debugging pages prior to deployment. 
 
+*If you would like to see my personal contributions to this project please click on the folder: pages on this fork!*
+
 ## Difficulties
 
 - Some issues that we had faced during creation was trying to allow stremlit to utilize Reddit as well as fixing the secrets after deploying. 
