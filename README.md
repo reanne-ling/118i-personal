@@ -26,7 +26,6 @@ With **SmartHaven** we aim to support individuals navigate Emergency Interim Hou
 - Helped lead the *Language & Communication Tools*
 - Aided peers on AI tools like the *Resource Recommender*, *Real-Time Availability Map*, and *AI ChatBot* with developing and debugging pages prior to deployment. 
 
----
 
 ## Difficulties
 
