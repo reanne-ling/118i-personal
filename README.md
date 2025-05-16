@@ -9,6 +9,16 @@ SafeHaven is a digital application aimed to help streamline Emergency Interim Ho
 
 ---
 
+## The Issue
+
+Currently, there are ongoing issues within  Emergency Interim Housing including streamlinign access, improving visibility of resources, and integrating support services across their systems. This can cause issues such as service inefficiency and roadblocks for staff to connect with residents in a timely mannor. However, finding a solution to create a central hub can help streamline and strengthen administrative systems. 
+
+---
+
+## Our Solution
+
+With **SmartHaven** we aim to support individuals navigate Emergency Interim Housing through a user-friendly interface and accesible application. Our all-in-one application aims to aid both users in streamlined accessible resources and administration with AI-powered strategic planning tools. 
+
 ## Contributions
 
 - Helped during brainstorming process and help initiate the foundation of our project
@@ -22,10 +32,6 @@ SafeHaven is a digital application aimed to help streamline Emergency Interim Ho
 
 - Some issues that we had faced during creation was trying to allow stremlit to utilize Reddit as well as fixing the secrets after deploying. 
 - There were some ideas that we had envisioned like incorporating NextDoor isntead of Reddit but due to some complications and restrictions we were unable to. 
-
----
-
----
 
 ---
 
