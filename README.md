@@ -1,5 +1,5 @@
 # SmartHaven
-# Crisis Housing, Reimagined with AI
+### Crisis Housing, Reimagined with AI
 BUS4-118i Section 01, Spring '25
 
 *Reanne's Project Showcase: SmartHaven*
