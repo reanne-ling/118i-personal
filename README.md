@@ -1,5 +1,6 @@
 # SmartHaven – Crisis Housing, Reimagined with AI
 BUS4-118i Section 01, Spring '25
+*Reanne's Project Showcase: SmartHaven*
 
 ---
 
@@ -25,7 +26,6 @@ With **SmartHaven** we aim to support individuals navigate Emergency Interim Hou
 - Created general and informative pages such as the *Main Page*, *Eligibility & Requirements*, *Resources & Help*
 - Helped lead the *Language & Communication Tools*
 - Aided peers on AI tools like the *Resource Recommender*, *Real-Time Availability Map*, and *AI ChatBot* with developing and debugging pages prior to deployment. 
-
 
 ## Difficulties
 
