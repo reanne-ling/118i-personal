@@ -3,51 +3,29 @@ BUS4-118i Section 01, Spring '25
 
 ---
 
-## 🔍 Project Overview
+## What is SmartHaven?
 
-SmartHaven is a generative AI-powered platform designed to assist individuals and case managers in navigating emergency interim housing resources in Santa Clara County. The app integrates sentiment analysis, mapping, and an AI assistant to streamline access to local support services, aiming to reduce friction and promote digital equity for vulnerable communities.
-
----
-
-## 👨‍💻 My Contributions
-
-- Proposed early project ideas, including site mapping and sentiment analysis using the Nextdoor API (pivoted to Reddit after access was denied)
-- Led prompt engineering and OpenAI API integration for the chatbot
-- Audited and standardized teammate code contributions to ensure Streamlit app functionality across multiple pages
-- Deployed and maintained the primary version on Streamlit Cloud
-- Resolved cross-team environment inconsistencies (Python and API versions)
-- Finalized structure and codebase, contributing 23 commits related to deployment, bug fixes, and formatting
+SafeHaven is a digital application aimed to help streamline Emergency Interim Housing services. We aim to empower users to efficiently organize and analyze EIH resources and locations, simplifying workflows and providing a more user-friendly experience. With both EIH users and admins in mind, our  features eases the process for user as well as provide analytical tools for administration. We include various pages and tools ranging from eligibility questions to a resource recommender. Our application is an all-in-one stop from streamlining all resource information to AI-powered tools helping tailor the Emergency Interim Housing experience to any users' needs!
 
 ---
 
-## ⚙️ Technologies & Tools
+## Contributions
 
-- **Languages**: Python, HTML/CSS (Streamlit native elements)
-- **Libraries**: Streamlit, OpenAI API, Reddit API, requests, folium
-- **Tools**: Git, GitHub, Streamlit Cloud, VS Code
-- **Methodologies**: Agile, Prompt Engineering, DevOps, Code Auditing
-
----
-
-## 🔐 API Key Management
-
-All API keys were stored securely via local environment variables.  
-To comply with security best practices:
-- My OpenAI API keys were revoked  
-- Auto-recharge billing was disabled  
-
-*Confirmation screenshots provided in a separate submission document.*
+- Helped during brainstorming process and help initiate the foundation of our project
+- Created general and informative pages such as the *Main Page*, *Eligibility & Requirements*, *Resources & Help*
+- Helped lead the *Language & Communication Tools*
+- Aided peers on AI tools like the *Resource Recommender*, *Real-Time Availability Map*, and *AI ChatBot* with developing and debugging pages prior to deployment. 
 
 ---
 
-## 📂 Repo Structure
+## Difficulties
 
-- `/pages/` – Modular Streamlit app components
-- `/archive/` – Early prototype build
-- `/documentation/` – Project planning and goals
-- `main_page.py` – Unified entry point
-- `requirements.txt` – Project dependencies
-- `setup.sh` – Local setup script
+- Some issues that we had faced during creation was trying to allow stremlit to utilize Reddit as well as fixing the secrets after deploying. 
+- There were some ideas that we had envisioned like incorporating NextDoor isntead of Reddit but due to some complications and restrictions we were unable to. 
+
+---
+
+---
 
 ---
 
